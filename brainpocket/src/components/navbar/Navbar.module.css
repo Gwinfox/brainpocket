@@ -1,0 +1,10 @@
+.navbar {
+  min-width: 15vw;
+  color: aliceblue;
+  grid-area: n;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3f4bc5;
+  border-right: 1px solid black;
+}

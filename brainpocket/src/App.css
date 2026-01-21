@@ -1,0 +1,15 @@
+.app-wrapper {
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+    "h h"
+    "n c";
+  grid-template-rows: 10vh auto;
+  grid-template-columns: 15vw auto;
+  background-color: rgb(198, 212, 241);
+}
+.content {
+  grid-area: c;
+  height: auto;
+  min-height: 90vh;
+}

@@ -1,0 +1,18 @@
+.header {
+  grid-area: h;
+  display: flex;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+.logo {
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid black;
+  box-sizing: border-box;
+}
+.text {
+  margin: auto;
+  align-items: center;
+}
