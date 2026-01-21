@@ -1,15 +1,11 @@
 .header {
   grid-area: h;
   display: flex;
-  border: 1px solid black;
-  box-sizing: border-box;
+  background-color: #3f4bc5;
 }
 .logo {
   width: 15vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-right: 1px solid black;
+  border: 1px solid rgb(21, 48, 129);
   box-sizing: border-box;
 }
 .logo > img {
@@ -18,5 +14,15 @@
 }
 .text {
   margin: auto;
-  align-items: center;
+}
+.headerText {
+  color: #ededf5;
+  font-size: calc(2vw + 1em);
+  font-weight: 700;
+}
+.nameText {
+  color: rgb(171, 193, 240);
+  text-transform: uppercase;
+  text-shadow: 2px 2px 3px #1a1c3a;
+  font-size: calc(2vw + 1em);
 }
