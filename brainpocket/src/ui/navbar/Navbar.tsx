@@ -1,17 +1,20 @@
-import styles from "./Navbar.module.css"
-import { navbarLinks } from "../../dal/navbtns"
-import { NavLink } from "react-router-dom"
+import styles from "./Navbar.module.css";
+import { navbarLinks } from "../../dal/navbtns";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
-    return <div className={styles.navbar}>
-        {navbarLinks.map(elem => (
-            <div key={elem.id}>
-                <NavLink to={elem.link}>
-                    <span>{elem.name}</span>
-                </NavLink>
-            </div>
-        ))}
+  return (
+    <div className={styles.navbar}>
+      {navbarLinks.map((elem) => (
+        <div className={styles.navRow} key={elem.id}>
+          <NavLink to={elem.link} className={(navData) => (navData.isActive ? styles.active : styles.pending)}>
+            <img className={styles.icon} src={elem.icon} alt="icon" />
+            <span className={styles.navRowText}>{elem.name}</span>
+          </NavLink>
+        </div>
+      ))}
     </div>
+  );
 }
 
-export default Navbar
+export default Navbar;

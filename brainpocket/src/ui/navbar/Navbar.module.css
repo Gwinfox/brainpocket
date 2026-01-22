@@ -4,4 +4,40 @@
   grid-area: n;
   background-color: #3f4bc5;
   border-right: 1px solid black;
+  font-size: calc(1.3vw + 0.1em);
+}
+.navRow {
+  margin-top: 1em;
+}
+a {
+  text-decoration: none;
+  margin-left: 5px;
+  font-weight: 700;
+}
+a.pending {
+  color: rgb(224, 226, 223);
+}
+a.active {
+  color: gold;
+}
+.icon {
+  margin-right: 0.1em;
+  height: 1em;
+  width: 1em;
+}
+@media (max-width: 600px) {
+  .icon {
+    height: 40px;
+    width: 40px;
+  }
+  .navRow {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+  }
+  .navRowText {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 }
