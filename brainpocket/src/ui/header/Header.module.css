@@ -4,7 +4,7 @@
   background-color: #3f4bc5;
 }
 .logo {
-  width: 15vw;
+  min-width: 15vw;
   border: 1px solid rgb(21, 48, 129);
   box-sizing: border-box;
 }
@@ -13,7 +13,7 @@
   height: 100%;
 }
 .text {
-  margin: auto;
+  margin-left: 1vw;
 }
 .headerText {
   color: #ededf5;
@@ -25,4 +25,12 @@
   text-transform: uppercase;
   text-shadow: 2px 2px 3px #1a1c3a;
   font-size: calc(2vw + 1em);
+}
+@media (max-width: 600px) {
+  .logo {
+    width: 22vw;
+  }
+  .text {
+    margin-left: 3vw;
+  }
 }
