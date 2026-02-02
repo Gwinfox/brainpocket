@@ -1,6 +1,14 @@
-import styles from "./Profile.module.css"
+import { Navigate } from "react-router-dom";
+import styles from "./Profile.module.css";
 
-function Profile() {
-    return <div className={styles.profile}>PROFILE</div>
+type Props = {
+  isAuth: boolean;
+};
+
+function Profile({ isAuth }:Props) {
+  if (!isAuth) {
+    return <Navigate to="/login" />;
+  }
+  return <div className={styles.profile}>PROFILE</div>;
 }
-export default Profile
+export default Profile;
