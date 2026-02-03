@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { LoginFormData } from "../ui/login/Login";
+import type { LoginFormData } from "../bll/useLoginData";
 
 const instance = axios.create({
   baseURL: "http://192.168.1.200/api",

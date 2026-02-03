@@ -1,33 +1,22 @@
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import styles from "./Login.module.css";
-import { useEffect, useState } from "react";
-import { authAPI } from "../../api/api";
 import { Navigate } from "react-router-dom";
-import type { UserData } from "../../App";
+import type { UserData } from "../../bll/useUserInit";
+import { useLoginData, type LoginFormData } from "../../bll/useLoginData";
 
 type Props = {
   isAuth: boolean;
   handleLogin: (data: UserData) => void;
 };
-export type LoginFormData = {
-  login: string;
-  password: string;
-  rememberMe: boolean;
-};
 
 function Login({ isAuth, handleLogin }: Props) {
-  const [formData, setFormData] = useState<null | LoginFormData>(null);
+  const { formData, onSubmit } = useLoginData(handleLogin);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormData>();
-  const onSubmit = (data: LoginFormData):void => {
-    setFormData(data);
-  };
-  useEffect(() => {
-    formData && authAPI.Login(formData).then((res) => handleLogin(res));
-  }, [formData]);
+
   if (isAuth) {
     return <Navigate to="/profile" />;
   }

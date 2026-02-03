@@ -1,5 +1,5 @@
 import styles from "./Navbar.module.css";
-import { navbarLinks } from "../../dal/navbtns";
+import { navbarLinks } from "../../bll/navbtns";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {

@@ -9,29 +9,11 @@ import Music from "./ui/music/Music";
 import Settings from "./ui/settings/Settings";
 import Users from "./ui/users/Users";
 import Login from "./ui/login/Login";
-import { useState } from "react";
+import { useUserInit } from "./bll/useUserInit";
 
-export type UserData = {
-  data: {
-    userId: number;
-    email: string;
-    login: string;
-    friends: Array<number>;
-    avatar: string;
-  };
-  messages: Array<string>;
-  resultCode: number;
-};
 
 function App() {
-  const [isAuth, setIsAuth] = useState<boolean>(false);
-  const [userData, setUserData] = useState<null | UserData>(null);
-  const handleLogin = (data: UserData):void => {
-    if (data.resultCode === 0) {
-      setUserData(data);
-      setIsAuth(true);
-    }
-  };
+  const {isAuth, userData, handleLogin} = useUserInit();
   return (
     <div className="app-wrapper">
       <Header />
@@ -45,10 +27,13 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/users" element={<Users />} />
           <Route path="/login" element={<Login isAuth={isAuth} handleLogin={handleLogin} />} />
+          <Route path="/" element={<Profile isAuth={isAuth} />} />
         </Routes>
       </div>
     </div>
   );
 }
+
+
 
 export default App;
