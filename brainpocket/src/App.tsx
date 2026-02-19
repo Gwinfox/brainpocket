@@ -9,7 +9,8 @@ import Music from "./ui/music/Music";
 import Settings from "./ui/settings/Settings";
 import Users from "./ui/users/Users";
 import Login from "./ui/login/Login";
-import { useUserInit } from "./bll/useUserInit";
+import { useUserInit } from "./bll/Hooks/useUserInit";
+import WithAuthRedirect from "./bll/HOCs/withAuthRedirect";
 
 
 function App() {
@@ -20,14 +21,14 @@ function App() {
       <Navbar />
       <div className="content">
         <Routes>
-          <Route path="/profile" element={<Profile isAuth={isAuth} />} />
+          <Route path="/profile" element={<WithAuthRedirect isAuth={isAuth} component={<Profile />}/>} />
           <Route path="/dialogs" element={<Dialogs />} />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/users" element={<Users />} />
           <Route path="/login" element={<Login isAuth={isAuth} handleLogin={handleLogin} />} />
-          <Route path="/" element={<Profile isAuth={isAuth} />} />
+          <Route path="/" element={<WithAuthRedirect isAuth={isAuth} component={<Profile />}/>} />
         </Routes>
       </div>
     </div>

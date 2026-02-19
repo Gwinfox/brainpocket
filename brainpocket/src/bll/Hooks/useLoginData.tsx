@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { authAPI } from "../api/api";
+import { authAPI } from "../../dal/api";
 import type { UserData } from "./useUserInit";
 
 type handleLogin = (data: UserData) => void;

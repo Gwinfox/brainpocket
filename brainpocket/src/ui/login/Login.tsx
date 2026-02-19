@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import styles from "./Login.module.css";
 import { Navigate } from "react-router-dom";
-import type { UserData } from "../../bll/useUserInit";
-import { useLoginData, type LoginFormData } from "../../bll/useLoginData";
+import type { UserData } from "../../bll/Hooks/useUserInit";
+import { useLoginData, type LoginFormData } from "../../bll/Hooks/useLoginData";
 
 type Props = {
   isAuth: boolean;

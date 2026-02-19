@@ -1,8 +1,8 @@
 import axios from "axios";
-import type { LoginFormData } from "../bll/useLoginData";
+import type { LoginFormData } from "../bll/Hooks/useLoginData";
 
 const instance = axios.create({
-  baseURL: "http://192.168.1.200/api",
+  baseURL: "http://localhost:5000/api",
   withCredentials: true,
 });
 
