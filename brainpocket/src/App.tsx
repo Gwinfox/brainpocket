@@ -22,11 +22,11 @@ function App() {
       <div className="content">
         <Routes>
           <Route path="/profile" element={<WithAuthRedirect isAuth={isAuth} component={<Profile />}/>} />
-          <Route path="/dialogs" element={<Dialogs />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/music" element={<Music />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/dialogs" element={<WithAuthRedirect isAuth={isAuth} component={<Dialogs />}/>} />
+          <Route path="/news" element={<WithAuthRedirect isAuth={isAuth} component={<News />}/>} />
+          <Route path="/music" element={<WithAuthRedirect isAuth={isAuth} component={<Music />}/>} />
+          <Route path="/settings" element={<WithAuthRedirect isAuth={isAuth} component={<Settings />}/>} />
+          <Route path="/users" element={<WithAuthRedirect isAuth={isAuth} component={<Users />}/>} />
           <Route path="/login" element={<Login isAuth={isAuth} handleLogin={handleLogin} />} />
           <Route path="/" element={<WithAuthRedirect isAuth={isAuth} component={<Profile />}/>} />
         </Routes>
