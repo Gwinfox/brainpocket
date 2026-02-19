@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { authAPI } from "../../dal/api";
 import type { ServerAuthResponse } from "./useUserInit";
 
-type handleLogin = (data: ServerAuthResponse) => void;
+type HandleLogin = (data: ServerAuthResponse) => void;
+
 
 export type LoginFormData = {
   login: string;
@@ -10,7 +11,7 @@ export type LoginFormData = {
   rememberMe: boolean;
 };
 
-export function useLoginData(handleLogin: handleLogin) {
+export function useLoginData(handleLogin: HandleLogin) {
   const [formData, setFormData] = useState<null | LoginFormData>(null);
   useEffect(() => {
     formData && authAPI.Login(formData).then((res) => handleLogin(res));
@@ -18,5 +19,5 @@ export function useLoginData(handleLogin: handleLogin) {
   const onSubmit = (data: LoginFormData): void => {
     setFormData(data);
   };
-  return { formData, onSubmit };
+  return onSubmit ;
 }

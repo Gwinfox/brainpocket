@@ -17,13 +17,17 @@ export type UserData = {
 export function useUserInit() {
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [userData, setUserData] = useState<null | UserData>(null);
+  const [loginError, setLoginError] = useState<string | null>(null);
   const handleLogin = (data: ServerAuthResponse): void => {
     if (data.resultCode === 0) {
       setUserData(data.data);
       setIsAuth(true);
     }
+    if (data.resultCode === 1) {
+      setLoginError(data.messages[0]);
+    }
   };
-  const handleCoockies = (data: ServerAuthResponse) => {
+  const handleCoockies = (data: ServerAuthResponse): void => {
     if (data.resultCode === 0) {
       setUserData(data.data);
       setIsAuth(true);
@@ -32,5 +36,5 @@ export function useUserInit() {
   useEffect(() => {
     authAPI.me().then((res) => handleCoockies(res));
   }, []);
-  return { isAuth, userData, handleLogin };
+  return { isAuth, userData, loginError,  handleLogin };
 }

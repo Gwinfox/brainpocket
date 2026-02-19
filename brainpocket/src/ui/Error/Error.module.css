@@ -1,0 +1,67 @@
+.ER_border {
+  margin-top: 5vw;
+  margin-left: 5vw;
+  width: 90vw;
+  height: 70vh;
+  border: 3px solid rgb(206, 41, 41);
+}
+.ER {
+  font-weight: 800;
+  font-size: 3vw;
+  margin-top: 8vh;
+  text-shadow: 1px 5px 2px black;
+  color: rgb(216, 27, 27);
+  text-align: center;
+  padding-bottom: 5vh;
+}
+.number {
+  font-weight: 800;
+  font-size: 8vw;
+  margin-top: 8vh;
+  text-shadow: 1px 5px 2px black;
+  color: rgb(167, 30, 30);
+  text-align: center;
+}
+.link {
+  text-decoration: none;
+}
+.message {
+  font-weight: 800;
+  font-size: 3vw;
+  margin-top: 8vh;
+  text-shadow: 1px 5px 2px black;
+  color: rgb(216, 27, 27);
+  text-align: center;
+  padding-bottom: 5vh;
+}
+.btn_back {
+  border: 3px solid black;
+  text-align: center;
+  font-size: 2vw;
+  display: block;
+  margin: auto;
+  color: white;
+  background-color: rgb(199, 71, 71);
+  border-radius: 3px;
+  height: 1.5em;
+  width: 10vw;
+}
+
+@media (max-width: 600px) {
+  .ER {
+    font-size: 5vw;
+    text-shadow: 0.5px 0.5px 0.5px black;
+  }
+  .number {
+    text-shadow: 0.5px 0.5px 0.5px black;
+  }
+  .message {
+    text-shadow: 0.5px 0.5px 0.5px black;
+  }
+  .btn_back {
+    font-size: 3vw;
+    width: 15vw;
+    height: 2em;
+    border: 1px solid black;
+  }
+}

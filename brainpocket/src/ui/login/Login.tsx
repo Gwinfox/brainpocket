@@ -6,11 +6,12 @@ import { useLoginData, type LoginFormData } from "../../bll/Hooks/useLoginData";
 
 type Props = {
   isAuth: boolean;
+  error: string | null;
   handleLogin: (data: ServerAuthResponse) => void;
 };
 
-function Login({ isAuth, handleLogin }: Props) {
-  const { formData, onSubmit } = useLoginData(handleLogin);
+function Login({ isAuth, error, handleLogin }: Props) {
+  const onSubmit  = useLoginData(handleLogin);
   const {
     register,
     handleSubmit,
@@ -52,6 +53,9 @@ function Login({ isAuth, handleLogin }: Props) {
       <div>
         <button className={styles.btn_enterLogin}>Войти</button>
       </div>
+      {errors.login && <div className={styles.error}>{errors.login.message}</div>}
+      {errors.password && <div className={styles.error}>{errors.password.message}</div>}
+      {error && <div className={styles.error}>{error}</div>}
     </form>
   );
 }
