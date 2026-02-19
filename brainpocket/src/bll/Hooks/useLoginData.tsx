@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { authAPI } from "../../dal/api";
-import type { UserData } from "./useUserInit";
+import type { ServerAuthResponse } from "./useUserInit";
 
-type handleLogin = (data: UserData) => void;
+type handleLogin = (data: ServerAuthResponse) => void;
 
 export type LoginFormData = {
   login: string;
