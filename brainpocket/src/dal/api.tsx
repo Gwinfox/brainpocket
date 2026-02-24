@@ -25,4 +25,11 @@ export const profileAPI = {
   getProfile(userId: number | undefined) {
     return instance.get("/profile/" + userId).then((res) => res.data);
   },
+  updateUserAvatar(file: File, userId: number) {
+    const formData = new FormData();
+    formData.append("avatar", file);
+    return instance
+      .put("/profile/photo/" + userId, formData, { headers: { "Content-Type": "multipart/form-data" } })
+      .then((res) => res.data);
+  },
 };

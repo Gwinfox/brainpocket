@@ -1,11 +1,19 @@
-import type { UserData } from "../Hooks/useUserInit";
+import type { UserData } from "./appTypes";
 
+//Пропсы
 export type ProfilePageProps = {
   userData: UserData | null;
 };
 export type ProfileProps = {
-  profile: Profile | null
-}
+  profile: Profile | null;
+  loginUserId: number;
+};
+export type AvatarProps = {
+  avatar: string | null | undefined;
+  userId: number | undefined;
+  loginUserId: number;
+};
+
 export type Profile = {
   aboutMe: string;
   contacts: Contacts;

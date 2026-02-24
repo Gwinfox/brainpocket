@@ -1,18 +1,6 @@
 import { useEffect, useState } from "react";
 import { authAPI } from "../../dal/api";
-
-export type ServerAuthResponse = {
-  data: UserData;
-  messages: Array<string>;
-  resultCode: number;
-};
-export type UserData = {
-  userId: number;
-  email: string;
-  login: string;
-  friends: Array<number>;
-  avatar: string;
-};
+import type { ServerAuthResponse, UserData } from "../types/appTypes";
 
 export function useUserInit() {
   const [isAuth, setIsAuth] = useState<boolean>(false);
@@ -36,5 +24,5 @@ export function useUserInit() {
   useEffect(() => {
     authAPI.me().then((res) => handleCoockies(res));
   }, []);
-  return { isAuth, userData, loginError,  handleLogin };
+  return { isAuth, userData, loginError, handleLogin };
 }

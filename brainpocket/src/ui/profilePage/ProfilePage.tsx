@@ -2,12 +2,16 @@ import styles from "./ProfilePage.module.css";
 import type { ProfilePageProps } from "../../bll/types/profileTypes";
 import { useProfileData } from "../../bll/Hooks/useProfileData";
 import { Profile } from "./profile/Profile";
+import { Preloader } from "../Preloader/Preloader";
 
 function ProfilePage({ userData }: ProfilePageProps) {
   const { profile } = useProfileData(userData);
+  if (!userData) {
+    return <Preloader />;
+  }
   return (
     <div className={styles.profilePage}>
-      <Profile profile={profile} />
+      <Profile profile={profile} loginUserId={userData.userId} />
     </div>
   );
 }

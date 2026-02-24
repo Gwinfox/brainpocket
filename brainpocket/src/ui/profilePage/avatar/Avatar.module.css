@@ -1,0 +1,39 @@
+.avatar {
+  aspect-ratio: 3/4;
+  width: calc(15vw + 2em);
+  background-color: aliceblue;
+  border: 2px solid rgb(185, 185, 185);
+  border-radius: 5px;
+}
+.profile_img {
+  top: 30%;
+  left: 2%;
+  position: absolute;
+}
+.btn_newImg {
+  display: none;
+  top: 1%;
+  left: 2%;
+  position: absolute;
+  padding: 3px 3px;
+  cursor: pointer;
+  background-color: #2130b6;
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+.btn_newImg input[type="file"] {
+  display: none;
+}
+.profile_img:hover .btn_newImg {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .profile_img {
+    top: 20%;
+  }
+  .avatar {
+    width: calc(25vw + 2em);
+  }
+}

@@ -1,10 +1,5 @@
 import { Navigate } from "react-router-dom";
-
-interface withAuthRedirectProps {
-  component: React.ReactNode;
-  isAuth: boolean;
-  redirectPath?: string;
-}
+import type { withAuthRedirectProps } from "../types/appTypes";
 
 function WithAuthRedirect({ component, isAuth, redirectPath = "/login" }: withAuthRedirectProps) {
   if (!isAuth) {
@@ -13,4 +8,4 @@ function WithAuthRedirect({ component, isAuth, redirectPath = "/login" }: withAu
   return component;
 }
 
-export default WithAuthRedirect
+export default WithAuthRedirect;
