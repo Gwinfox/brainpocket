@@ -3,7 +3,7 @@ import "./App.css";
 import Dialogs from "./ui/dialogs/Dialogs";
 import Header from "./ui/header/Header";
 import Navbar from "./ui/navbar/Navbar";
-import Profile from "./ui/profile/Profile";
+import ProfilePage from "./ui/profile/ProfilePage";
 import News from "./ui/news/News";
 import Music from "./ui/music/Music";
 import Settings from "./ui/settings/Settings";
@@ -20,7 +20,7 @@ function App() {
       <Navbar />
       <div className="content">
         <Routes>
-          <Route path="/profile" element={<WithAuthRedirect isAuth={isAuth} component={<Profile />} />} />
+          <Route path="/profile" element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />} />
           <Route path="/dialogs" element={<WithAuthRedirect isAuth={isAuth} component={<Dialogs />} />} />
           <Route path="/news" element={<WithAuthRedirect isAuth={isAuth} component={<News />} />} />
           <Route path="/music" element={<WithAuthRedirect isAuth={isAuth} component={<Music />} />} />
@@ -30,7 +30,7 @@ function App() {
             path="/login"
             element={<Login isAuth={isAuth} handleLogin={handleLogin} error={loginError} />}
           />
-          <Route path="/" element={<WithAuthRedirect isAuth={isAuth} component={<Profile />} />} />
+          <Route path="/" element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />} />
         </Routes>
       </div>
     </div>
