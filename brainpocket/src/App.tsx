@@ -3,7 +3,7 @@ import "./App.css";
 import Dialogs from "./ui/dialogs/Dialogs";
 import Header from "./ui/header/Header";
 import Navbar from "./ui/navbar/Navbar";
-import ProfilePage from "./ui/profile/ProfilePage";
+import ProfilePage from "./ui/profilePage/ProfilePage";
 import News from "./ui/news/News";
 import Music from "./ui/music/Music";
 import Settings from "./ui/settings/Settings";

@@ -3,6 +3,9 @@ import type { UserData } from "../Hooks/useUserInit";
 export type ProfilePageProps = {
   userData: UserData | null;
 };
+export type ProfileProps = {
+  profile: Profile | null
+}
 export type Profile = {
   aboutMe: string;
   contacts: Contacts;
