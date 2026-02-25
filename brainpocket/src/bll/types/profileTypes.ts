@@ -13,6 +13,19 @@ export type AvatarProps = {
   userId: number | undefined;
   loginUserId: number;
 };
+export type UsernameProps = {
+  name: string | undefined;
+};
+export type StatusProps = {
+  status: string;
+  userId: number | undefined;
+  loginUserId: number;
+};
+export type EditStatusProps = {
+  setNewStatus: () => void;
+  handleChangeStatus: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  statusText: string;
+};
 
 export type Profile = {
   aboutMe: string;

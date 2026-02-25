@@ -32,4 +32,7 @@ export const profileAPI = {
       .put("/profile/photo/" + userId, formData, { headers: { "Content-Type": "multipart/form-data" } })
       .then((res) => res.data);
   },
+  updateStatus(status: string | null, id: number) {
+    return instance.post("/profile/status", { id, status });
+  },
 };
