@@ -1,0 +1,41 @@
+.post {
+  border: 1px solid black;
+  margin-bottom: 2em;
+  border-radius: 1em;
+  background-color: white;
+}
+.postText {
+  margin-left: 1em;
+}
+.btn_like {
+  margin-right: 20px;
+  margin-left: 5px;
+  height: 20px;
+  width: 50px;
+  border-radius: 1em;
+  color: #fff;
+  background-color: rgba(255, 14, 14, 0.884);
+}
+.btn_del {
+  margin-right: 0.2em;
+  margin-left: 1em;
+  height: 1, 5em;
+  width: 5em;
+  border-radius: 1em;
+  color: #fff;
+  background-color: rgba(20, 40, 224, 0.884);
+}
+.likes {
+  display: flex;
+  justify-content: end;
+  margin-top: 1em;
+  margin-bottom: 2px;
+  text-shadow: 1px 1px 1px #000;
+  color: rgb(255, 0, 0);
+}
+
+@media (max-width: 600px) {
+  .btn_del {
+    width: 6em;
+  }
+}

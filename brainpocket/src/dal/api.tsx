@@ -36,7 +36,19 @@ export const profileAPI = {
   updateStatus(status: string | null, id: number) {
     return instance.post("/profile/status", { id, status });
   },
-  setContacts(data: Contacts, userId:number) {
+  setContacts(data: Contacts, userId: number) {
     return instance.put("/profile/contacts", { data, userId }).then((res) => res.data);
+  },
+  getPosts(id: number) {
+    return instance.get("/profile/posts/" + id).then((res) => res.data);
+  },
+  like(postId: number):Promise<void> {
+    return instance.post("/profile/posts/like", { postId });
+  },
+  deletePost(postId:number) {
+    return instance.delete("/profile/deletepost/" + postId);
+  },
+  addPostAPI(id:number, post:string) {
+    return instance.post("/profile/addpost", { id, post });
   },
 };

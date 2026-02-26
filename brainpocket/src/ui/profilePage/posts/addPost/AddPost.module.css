@@ -1,0 +1,43 @@
+.form {
+  position: relative;
+  width: calc(30% + 13em);
+  display: flex;
+  padding: 1em 0 1em 0;
+  margin-left: auto;
+}
+.btn_addPost {
+  font-size: calc((2vw + 2vh) / 4);
+  width: calc(10% + 3em);
+  margin-left: 0.3em;
+  height: 7.5vh;
+  color: white;
+  border: 1px solid black;
+  border-radius: 1em;
+  background-color: rgba(53, 43, 182, 0.877);
+}
+.textArea {
+  resize: none;
+  border: 1px solid black;
+  height: 7vh;
+  width: calc(20vw + 12em);
+  border-radius: 1em;
+}
+.error {
+  color: red;
+  position: absolute;
+  top: -2em;
+}
+.errArea {
+  border: 2px solid red;
+  border-radius: 1em;
+}
+
+@media (max-width: 600px) {
+  .form {
+    width: 77vw;
+  }
+  .btn_addPost {
+    font-size: calc((4vw + 4vh) / 4);
+    width: calc(17% + 3em);
+  }
+}

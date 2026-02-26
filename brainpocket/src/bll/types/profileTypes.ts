@@ -40,7 +40,29 @@ export type ContactsFormProps = {
   loginUserId: number;
   closeSettings: (contacts: Contacts) => void;
 };
+export type PostsProps = {
+  loginUserId: number;
+  userId: number;
+};
+export type PostProps = {
+  loginUserId: number;
+  userId: number;
+  post: Post;
+  deletePost: (id: number) => void;
+  addLike: (id: number) => Promise<void>;
+};
+export type AddPostProps = {
+  addPost: (loginUserId: number, post: string) => void;
+  loginUserId: number;
+};
 
+export type Post = {
+  id: number;
+  author: number;
+  post: string;
+  likes: number;
+  date: string;
+};
 export type Profile = {
   aboutMe: string;
   contacts: Contacts;
@@ -69,4 +91,7 @@ type Photos = {
 type Location = {
   city: string | null;
   country: string | null;
+};
+export type PostForm = {
+  newPost: string;
 };
