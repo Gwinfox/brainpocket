@@ -9,6 +9,9 @@ function ProfilePage({ userData }: ProfilePageProps) {
   if (!userData) {
     return <Preloader />;
   }
+  if (!profile) {
+    return null
+  }
   return (
     <div className={styles.profilePage}>
       <Profile profile={profile} loginUserId={userData.userId} />

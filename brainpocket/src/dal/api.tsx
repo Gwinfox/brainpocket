@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { LoginFormData } from "../bll/Hooks/useLoginData";
+import type { Contacts } from "../bll/types/profileTypes";
 
 const instance = axios.create({
   baseURL: "http://localhost:5000/api",
@@ -34,5 +35,8 @@ export const profileAPI = {
   },
   updateStatus(status: string | null, id: number) {
     return instance.post("/profile/status", { id, status });
+  },
+  setContacts(data: Contacts, userId:number) {
+    return instance.put("/profile/contacts", { data, userId }).then((res) => res.data);
   },
 };

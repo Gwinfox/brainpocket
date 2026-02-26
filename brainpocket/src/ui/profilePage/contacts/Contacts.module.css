@@ -1,0 +1,44 @@
+.c_head {
+  padding-bottom: 0.5em;
+  font-weight: 700;
+  height: 10%;
+  margin-left: 37%;
+  color: rgb(24, 3, 73);
+  font-size: calc(20% + 1vw);
+}
+.contacts {
+  top: 70%;
+  left: calc(20% + 3em);
+  position: absolute;
+  width: calc(5em + 20vw);
+  height: auto;
+  background-color: rgb(227, 235, 245);
+  border: 2px solid rgb(6, 24, 128);
+  border-radius: 5px;
+  padding-bottom: 1em;
+}
+.gear_button {
+  display: none;
+  float: right;
+  font-size: 1em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.gear_button:hover {
+  transform: rotate(30deg);
+}
+.contacts:hover .gear_button {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .contacts {
+    top: 70%;
+    left: calc(35% + 3em);
+    width: calc(5em + 20vw);
+    height: auto;
+  }
+}

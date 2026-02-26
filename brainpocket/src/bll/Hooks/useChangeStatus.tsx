@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { profileAPI } from "../../dal/api";
 
-export function useChangeStatus(loginUserId: number, userId: number | undefined, status: string) {
+export function useChangeStatus(loginUserId: number, userId: number, status: string) {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [statusText, setStatusText] = useState<string>(status);
   const handleDoubleClick = () => {

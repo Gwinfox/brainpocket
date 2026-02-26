@@ -5,26 +5,40 @@ export type ProfilePageProps = {
   userData: UserData | null;
 };
 export type ProfileProps = {
-  profile: Profile | null;
+  profile: Profile;
   loginUserId: number;
 };
 export type AvatarProps = {
-  avatar: string | null | undefined;
-  userId: number | undefined;
+  avatar: string | null;
+  userId: number;
   loginUserId: number;
 };
 export type UsernameProps = {
-  name: string | undefined;
+  name: string;
 };
 export type StatusProps = {
   status: string;
-  userId: number | undefined;
+  userId: number;
   loginUserId: number;
 };
 export type EditStatusProps = {
   setNewStatus: () => void;
   handleChangeStatus: (e: React.ChangeEvent<HTMLInputElement>) => void;
   statusText: string;
+};
+export type ContactsProps = {
+  userId: number;
+  loginUserId: number;
+  contacts: Contacts;
+};
+export type ContactProps = {
+  contact: string;
+  value: string | null;
+};
+export type ContactsFormProps = {
+  contacts: Contacts;
+  loginUserId: number;
+  closeSettings: (contacts: Contacts) => void;
 };
 
 export type Profile = {
@@ -36,7 +50,7 @@ export type Profile = {
   location: Location;
   friends: Array<number>;
 };
-type Contacts = {
+export type Contacts = {
   vk: string;
   email: string | null;
   github: string | null;

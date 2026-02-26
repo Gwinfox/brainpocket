@@ -1,0 +1,40 @@
+.active {
+  text-align: center;
+  margin-bottom: 0.2em;
+  width: 100%;
+  font-weight: 700;
+  height: 10%;
+  color: rgb(40, 42, 182);
+  font-size: calc(10% + 1vw);
+  white-space: nowrap;
+}
+.active > span {
+  color: brown;
+  font-style: italic;
+}
+.pending {
+  display: none;
+}
+.contactField {
+  font-size: 0.7em;
+  width: 90%;
+}
+.btn_contacts {
+  border-radius: 5px;
+  color: aliceblue;
+  background-color: rgb(64, 64, 238);
+  margin-right: 1em;
+  width: 8vw;
+  font-size: 1vw;
+  float: right;
+}
+.error {
+  color: red;
+  font-size: 0.7em;
+}
+
+@media (max-width: 600px) {
+  .active {
+    font-size: calc(30% + 1vw);
+  }
+}
