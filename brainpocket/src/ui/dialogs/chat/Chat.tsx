@@ -4,7 +4,7 @@ import styles from "./Chat.module.css";
 import { MessageElement } from "./message/MessageElement";
 import SendMessage from "./sendMessage/SendMessage";
 
-export function Chat({ dialog = [], avatar, userLastName, dialogId, loginUserAvatar }: ChatProps) {
+export function Chat({ dialog = [], avatar, userLastName, loginUserAvatar }: ChatProps) {
   const { addMessage, actualDialog } = useGetDialog(dialog);
   return (
     <div>
