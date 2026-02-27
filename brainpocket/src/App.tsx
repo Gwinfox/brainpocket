@@ -21,7 +21,7 @@ function App() {
       <div className="content">
         <Routes>
           <Route path="/profile" element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />} />
-          <Route path="/dialogs" element={<WithAuthRedirect isAuth={isAuth} component={<Dialogs />} />} />
+          <Route path="/dialogs/*" element={<WithAuthRedirect isAuth={isAuth} component={<Dialogs userData={userData}/>} />} />
           <Route path="/news" element={<WithAuthRedirect isAuth={isAuth} component={<News />} />} />
           <Route path="/music" element={<WithAuthRedirect isAuth={isAuth} component={<Music />} />} />
           <Route path="/settings" element={<WithAuthRedirect isAuth={isAuth} component={<Settings />} />} />

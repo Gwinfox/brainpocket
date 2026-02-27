@@ -1,4 +1,4 @@
-import { useGetContacts } from "../../../bll/Hooks/useGetContacts";
+import { useGetContacts } from "../../../bll/Hooks/ProfilePageHooks/useGetContacts";
 import type { ContactsProps } from "../../../bll/types/profileTypes";
 import { ContactsForm } from "./contact/ContactsForm";
 import styles from "./Contacts.module.css";

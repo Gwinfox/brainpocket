@@ -1,4 +1,4 @@
-import { useChangeAvatar } from "../../../bll/Hooks/useChangeAvatar";
+import { useChangeAvatar } from "../../../bll/Hooks/ProfilePageHooks/useChangeAvatar";
 import type { AvatarProps } from "../../../bll/types/profileTypes";
 import { Preloader } from "../../Preloader/Preloader";
 import styles from "./Avatar.module.css";

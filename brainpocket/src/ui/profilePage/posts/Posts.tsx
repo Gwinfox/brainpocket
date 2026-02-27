@@ -1,4 +1,4 @@
-import { useGetPosts } from "../../../bll/Hooks/useGetPosts";
+import { useGetPosts } from "../../../bll/Hooks/ProfilePageHooks/useGetPosts";
 import type { PostsProps } from "../../../bll/types/profileTypes";
 import { AddPost } from "./addPost/AddPost";
 import { Post } from "./post/Post";

@@ -1,6 +1,6 @@
 import styles from "./Status.module.css";
 import type { StatusProps } from "../../../bll/types/profileTypes";
-import { useChangeStatus } from "../../../bll/Hooks/useChangeStatus";
+import { useChangeStatus } from "../../../bll/Hooks/ProfilePageHooks/useChangeStatus";
 import { EditStatus } from "./EditStatus";
 
 export function Status({ status, loginUserId, userId }: StatusProps) {

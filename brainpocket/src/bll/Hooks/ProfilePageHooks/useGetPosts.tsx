@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { profileAPI } from "../../dal/api";
-import type { Post } from "../types/profileTypes";
+import { profileAPI } from "../../../dal/api";
+import type { Post } from "../../types/profileTypes";
 
 export function useGetPosts(id: number) {
   const [posts, setPosts] = useState<Array<Post> | null>(null);

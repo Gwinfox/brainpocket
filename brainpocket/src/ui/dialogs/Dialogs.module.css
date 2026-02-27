@@ -1,6 +1,14 @@
-.profile {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.dialogs {
+  display: grid;
+  grid-template-areas: "s c";
+  grid-template-columns: 2fr 10fr;
+}
+.senders {
+  grid-area: s;
+  background-color: rgba(202, 202, 231, 0.856);
+}
+.chat {
+  height: 89vh;
+  grid-area: c;
+  border: 5px solid rgb(72, 72, 128);
 }

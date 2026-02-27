@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { profileAPI } from "../../dal/api";
+import { profileAPI } from "../../../dal/api";
 
 export function useChangeStatus(loginUserId: number, userId: number, status: string) {
   const [editMode, setEditMode] = useState<boolean>(false);

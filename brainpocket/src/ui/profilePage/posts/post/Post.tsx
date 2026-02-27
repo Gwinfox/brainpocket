@@ -1,4 +1,4 @@
-import { useDisabledButtons } from "../../../../bll/Hooks/useDisabledButtons";
+import { useDisabledButtons } from "../../../../bll/Hooks/ProfilePageHooks/useDisabledButtons";
 import type { PostProps } from "../../../../bll/types/profileTypes";
 import styles from "./Post.module.css";
 

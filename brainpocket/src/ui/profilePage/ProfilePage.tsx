@@ -1,6 +1,6 @@
 import styles from "./ProfilePage.module.css";
 import type { ProfilePageProps } from "../../bll/types/profileTypes";
-import { useProfileData } from "../../bll/Hooks/useProfileData";
+import { useProfileData } from "../../bll/Hooks/ProfilePageHooks/useProfileData";
 import { Profile } from "./profile/Profile";
 import { Preloader } from "../Preloader/Preloader";
 import { Posts } from "./posts/Posts";

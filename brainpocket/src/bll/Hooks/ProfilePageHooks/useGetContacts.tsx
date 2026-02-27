@@ -1,6 +1,6 @@
 import { useEffect, useState, type JSX } from "react";
-import type { Contacts } from "../types/profileTypes";
-import { Contact } from "../../ui/profilePage/contacts/contact/Contact";
+import type { Contacts } from "../../types/profileTypes";
+import { Contact } from "../../../ui/profilePage/contacts/contact/Contact";
 
 export function useGetContacts(contacts: Contacts) {
   const [editMode, setEditMode] = useState<boolean>(false);

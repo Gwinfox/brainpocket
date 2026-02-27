@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import styles from './Contact.module.css';
 import type { Contacts, ContactsFormProps } from "../../../../bll/types/profileTypes";
-import { useSetContacts } from "../../../../bll/Hooks/useSetContacts";
+import { useSetContacts } from "../../../../bll/Hooks/ProfilePageHooks/useSetContacts";
 
 export function ContactsForm({ contacts, loginUserId, closeSettings }: ContactsFormProps) {
   const {

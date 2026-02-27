@@ -1,0 +1,31 @@
+.textarea {
+  width: calc(80% + 5vw);
+  height: 90%;
+  border: 1px solid black;
+  border-radius: 0.3em;
+  resize: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.btnSend {
+  font-size: calc((1vw + 1vh) / 2);
+  width: calc(5vw + 5em);
+  background-color: rgba(19, 32, 92, 0.486);
+  color: #fff;
+  border-radius: 0.3em;
+}
+.form {
+  position: relative;
+  height: 6vh;
+  display: flex;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.error {
+  color: red;
+  position: absolute;
+  top: -2em;
+}
+.errArea {
+  border: 2px solid red;
+  border-radius: 0.3em;
+}

@@ -1,6 +1,6 @@
 import imageCompression from "browser-image-compression";
 import { useState } from "react";
-import { profileAPI } from "../../dal/api";
+import { profileAPI } from "../../../dal/api";
 import type { ChangeEvent } from "react";
 
 export function useChangeAvatar(loginUserId: number) {
