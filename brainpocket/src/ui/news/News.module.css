@@ -1,6 +1,7 @@
-.profile {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.noMore {
+    text-align: center;
+    font-size: 1em;
+    margin-bottom: 1em;
+    color: rgb(7, 7, 117);
+    font-weight: 600;
 }

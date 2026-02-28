@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import styles from "./SendMessage.module.css";
-import type { addMessageForm, SendMessageProps } from "../../../../bll/types/DialogsTypes";
+import type { addMessageForm, SendMessageProps } from "../../../../bll/types/dialogsTypes";
 
 export function SendMessage({ addMessage}: SendMessageProps) {
   const {

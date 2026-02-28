@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/profile" element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />} />
           <Route path="/dialogs/*" element={<WithAuthRedirect isAuth={isAuth} component={<Dialogs userData={userData}/>} />} />
-          <Route path="/news" element={<WithAuthRedirect isAuth={isAuth} component={<News />} />} />
+          <Route path="/news" element={<WithAuthRedirect isAuth={isAuth} component={<News userData={userData}/>} />} />
           <Route path="/music" element={<WithAuthRedirect isAuth={isAuth} component={<Music />} />} />
           <Route path="/settings" element={<WithAuthRedirect isAuth={isAuth} component={<Settings />} />} />
           <Route path="/users" element={<WithAuthRedirect isAuth={isAuth} component={<Users />} />} />

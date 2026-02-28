@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type {Message } from "../../types/DialogsTypes";
+import type {Message } from "../../types/dialogsTypes";
 
 export function useGetDialog(dialog: Message[]) {
   const [actualDialog, setActualDialog] = useState(dialog);

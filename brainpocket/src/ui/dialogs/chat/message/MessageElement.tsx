@@ -1,4 +1,4 @@
-import type { MessageElementProps } from "../../../../bll/types/DialogsTypes";
+import type { MessageElementProps } from "../../../../bll/types/dialogsTypes";
 import styles from "./MessageElement.module.css";
 
 export function MessageElement({ text, avatar, userLastName, sender, loginUserAvatar }: MessageElementProps) {

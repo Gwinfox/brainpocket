@@ -57,3 +57,8 @@ export const dialogsAPI = {
     return instance.get("/dialogs/" + id).then((res) => res.data);
   },
 };
+export const newsAPI = {
+  getNews(friends: number[], page = 1, limit = 10) {
+    return instance.post("/news/list", { friends, page, limit }).then((res) => res.data);
+  },
+};

@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { useGetDialogs } from "../../bll/Hooks/DialogsHooks/useGetDialogs";
-import type { DialogsProps } from "../../bll/types/DialogsTypes";
+import type { DialogsProps } from "../../bll/types/dialogsTypes";
 import styles from "./Dialogs.module.css";
 import { Sender } from "./sender/Sender";
 import { Chat } from "./chat/Chat";

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { dialogsAPI } from "../../../dal/api";
-import type { Dialogs } from "../../types/DialogsTypes";
+import type { Dialogs } from "../../types/dialogsTypes";
 
 export function useGetDialogs(userId: number | undefined) {
   const [dialogs, setDialogs] = useState<Dialogs | null>(null);

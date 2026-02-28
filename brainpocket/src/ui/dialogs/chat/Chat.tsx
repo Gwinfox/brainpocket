@@ -1,5 +1,5 @@
 import { useGetDialog } from "../../../bll/Hooks/DialogsHooks/useGetDialog";
-import type { ChatProps, Message } from "../../../bll/types/DialogsTypes";
+import type { ChatProps, Message } from "../../../bll/types/dialogsTypes";
 import styles from "./Chat.module.css";
 import { MessageElement } from "./message/MessageElement";
 import SendMessage from "./sendMessage/SendMessage";
