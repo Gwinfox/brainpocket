@@ -6,7 +6,6 @@ export type UsersProps = {
 };
 export type Users = Array<User>;
 export type UsersElementProps = {
-  loginUserId: number;
   user: User;
   loginUserFriends: number[];
 };

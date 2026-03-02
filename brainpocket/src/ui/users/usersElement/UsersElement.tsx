@@ -3,7 +3,7 @@ import styles from "./UsersElement.module.css";
 import type { UsersElementProps } from "../../../bll/types/usersTypes";
 import { useGetFollowButton } from "../../../bll/Hooks/UsersHooks/useGetFollowButton";
 
-export function UsersElement({ loginUserId, user, loginUserFriends }: UsersElementProps) {
+export function UsersElement({ user, loginUserFriends }: UsersElementProps) {
   const { button } = useGetFollowButton(loginUserFriends, user.id);
   return (
     <div className={styles.usrObj}>

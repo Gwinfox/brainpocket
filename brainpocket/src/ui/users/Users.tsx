@@ -14,7 +14,7 @@ function Users({ userData }: UsersProps) {
       <div className={styles.userList}>
         {users.map((u, i) => (
           <div key={i + 1}>
-            <UsersElement loginUserId={userData.userId} user={u} loginUserFriends={userData.friends} />
+            <UsersElement user={u} loginUserFriends={userData.friends} />
           </div>
         ))}
       </div>
