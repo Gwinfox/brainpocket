@@ -8,6 +8,7 @@ export type Users = Array<User>;
 export type UsersElementProps = {
   loginUserId: number;
   user: User;
+  loginUserFriends: number[];
 };
 export type PaginatorProps = {
   totalItemsCount: number;
