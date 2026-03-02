@@ -1,6 +1,5 @@
-.profile {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.userList {
+  height: 90%;
+  margin-left: 2em;
+  margin-top: 2em;
 }

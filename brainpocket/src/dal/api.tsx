@@ -62,3 +62,8 @@ export const newsAPI = {
     return instance.post("/news/list", { friends, page, limit }).then((res) => res.data);
   },
 };
+export const usersAPI = {
+  getUsers(currentPage: number = 1, pageSize: number = 5) {
+    return instance.get(`/users?page=${currentPage}$count=${pageSize}`).then((res) => res.data);
+  },
+};
