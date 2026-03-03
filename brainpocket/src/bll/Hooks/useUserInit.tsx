@@ -6,6 +6,10 @@ export function useUserInit() {
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [userData, setUserData] = useState<null | UserData>(null);
   const [loginError, setLoginError] = useState<string | null>(null);
+  const logout = () => {
+    authAPI.logout();
+    setIsAuth(false);
+  };
   const handleLogin = (data: ServerAuthResponse): void => {
     if (data.resultCode === 0) {
       setUserData(data.data);
@@ -24,5 +28,5 @@ export function useUserInit() {
   useEffect(() => {
     authAPI.me().then((res) => handleCoockies(res));
   }, []);
-  return { isAuth, userData, loginError, handleLogin };
+  return { isAuth, userData, loginError, handleLogin, logout };
 }

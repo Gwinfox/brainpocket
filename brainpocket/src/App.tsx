@@ -13,24 +13,33 @@ import { useUserInit } from "./bll/Hooks/useUserInit";
 import WithAuthRedirect from "./bll/HOCs/withAuthRedirect";
 
 function App() {
-  const { isAuth, userData, loginError, handleLogin } = useUserInit();
+  const { isAuth, userData, loginError, handleLogin, logout } = useUserInit();
   return (
     <div className="app-wrapper">
-      <Header />
+      <Header isAuth={isAuth} logout={logout}/>
       <Navbar />
       <div className="content">
         <Routes>
-          <Route path="/profile" element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />} />
-          <Route path="/dialogs/*" element={<WithAuthRedirect isAuth={isAuth} component={<Dialogs userData={userData}/>} />} />
-          <Route path="/news" element={<WithAuthRedirect isAuth={isAuth} component={<News userData={userData}/>} />} />
+          <Route
+            path="/profile"
+            element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}
+          />
+          <Route
+            path="/dialogs/*"
+            element={<WithAuthRedirect isAuth={isAuth} component={<Dialogs userData={userData} />} />}
+          />
+          <Route path="/news" element={<WithAuthRedirect isAuth={isAuth} component={<News userData={userData} />} />} />
           <Route path="/music" element={<WithAuthRedirect isAuth={isAuth} component={<Music />} />} />
           <Route path="/settings" element={<WithAuthRedirect isAuth={isAuth} component={<Settings />} />} />
-          <Route path="/users" element={<WithAuthRedirect isAuth={isAuth} component={<Users userData={userData}/>} />} />
           <Route
-            path="/login"
-            element={<Login isAuth={isAuth} handleLogin={handleLogin} error={loginError} />}
+            path="/users"
+            element={<WithAuthRedirect isAuth={isAuth} component={<Users userData={userData} />} />}
           />
-          <Route path="/" element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />} />
+          <Route path="/login" element={<Login isAuth={isAuth} handleLogin={handleLogin} error={loginError} />} />
+          <Route
+            path="/"
+            element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}
+          />
         </Routes>
       </div>
     </div>

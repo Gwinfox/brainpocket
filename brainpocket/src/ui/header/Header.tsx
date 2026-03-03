@@ -1,6 +1,7 @@
+import type { HeaderProps } from "../../bll/types/headerTypes";
 import styles from "./Header.module.css";
 
-function Header() {
+function Header({ isAuth, logout }: HeaderProps) {
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
@@ -10,6 +11,11 @@ function Header() {
         <span className={styles.headerText}>Замечательная социальная сеть </span>
         <span className={styles.nameText}>facekontakt</span>
       </div>
+      {isAuth && (
+        <div className={styles.loginBlock}>
+          <button onClick={logout}>выйти</button>
+        </div>
+      )}
     </div>
   );
 }

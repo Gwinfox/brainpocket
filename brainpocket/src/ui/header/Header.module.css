@@ -1,36 +1,53 @@
 .header {
   grid-area: h;
-  display: flex;
   background-color: #3f4bc5;
+  display: flex;
 }
 .logo {
-  min-width: 15vw;
-  border: 1px solid rgb(21, 48, 129);
-  box-sizing: border-box;
+  width: 19vw;
+  height: 100%;
 }
 .logo > img {
   width: 100%;
   height: 100%;
 }
 .text {
-  margin-left: 1vw;
-}
-.headerText {
-  color: #ededf5;
-  font-size: calc(2vw + 1em);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: #fff;
+  font-size: calc(2vw + 10px);
   font-weight: 700;
 }
-.nameText {
-  color: rgb(171, 193, 240);
+.textlogo {
+  color: rgb(145, 195, 214);
   text-transform: uppercase;
-  text-shadow: 2px 2px 3px #1a1c3a;
-  font-size: calc(2vw + 1em);
+  text-shadow: 2px 2px 3px #fff;
 }
+.loginBlock {
+  margin-right: 1em;
+  float: right;
+}
+.loginBlock a {
+  font-size: 3vw;
+  color: #fff;
+  text-decoration: none;
+}
+.loginBlock button {
+  border: 1px solid rgb(107, 116, 201);
+  border-radius: 0.5em;
+  width: calc(3vw + 3em);
+  height: calc(2vh + 1em);
+  color: #fff;
+  background-color: #0d1781;
+}
+
 @media (max-width: 600px) {
   .logo {
     width: 22vw;
   }
-  .text {
-    margin-left: 3vw;
+  .loginBlock > button {
+    width: calc(5vw + 3em);
   }
 }

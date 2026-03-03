@@ -21,6 +21,11 @@ export const authAPI = {
   me() {
     return instance.get("auth/me").then((res) => res.data);
   },
+  logout() {
+    return instance.get("/auth/logout").then((res) => {
+      return res.data;
+    });
+  },
 };
 export const profileAPI = {
   getProfile(userId: number | undefined) {
