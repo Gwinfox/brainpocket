@@ -25,6 +25,17 @@ a.active {
   height: 1em;
   width: 1em;
 }
+.friendsBar {
+  display: flex;
+  justify-content: center;
+  margin-top: 5em;
+  margin-bottom: 1em;
+}
+.friends_row {
+  color: rgb(224, 226, 223);
+  display: flex;
+  justify-content: center;
+}
 @media (max-width: 600px) {
   .icon {
     height: 40px;
@@ -36,6 +47,15 @@ a.active {
     margin-top: 2em;
   }
   .navRowText {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .friends_row {
+    display: block;
+    margin-top: 2em;
+  }
+  .row_text {
     display: block;
     width: 100%;
     text-align: center;

@@ -16,8 +16,8 @@ function App() {
   const { isAuth, userData, loginError, handleLogin, logout } = useUserInit();
   return (
     <div className="app-wrapper">
-      <Header isAuth={isAuth} logout={logout}/>
-      <Navbar />
+      <Header isAuth={isAuth} logout={logout} />
+      {userData && <Navbar userData={userData} />}
       <div className="content">
         <Routes>
           <Route

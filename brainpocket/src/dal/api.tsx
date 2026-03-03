@@ -78,3 +78,11 @@ export const usersAPI = {
     return instance.post("/users/unfollow", { friends, userId }).then((res) => res.data);
   },
 };
+export const friendsAPI = {
+  getFriends(friends: number[], page: number = 1, count: number = 5) {
+    return instance.post("/users/friends", { page, count, friends }).then((res) => res.data);
+  },
+  getRandomFriends(friends: number[]) {
+    return instance.post("/users/friends", { friends }).then((res) => res.data.items.sort(() => 0.5 - Math.random()));
+  },
+};

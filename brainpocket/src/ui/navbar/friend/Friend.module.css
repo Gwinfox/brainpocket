@@ -1,0 +1,29 @@
+.friend {
+  text-decoration: none;
+  margin-left: 3px;
+  width: 30%;
+  height: 3em;
+}
+.friend > img {
+  width: 90%;
+  height: 80%;
+}
+.avatar {
+  border-radius: 5px;
+}
+.friendName {
+  color: rgb(249, 251, 253);
+  font-size: calc(1vw + 1px);
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 600px) {
+  .friend {
+    width: 70%;
+    height: 60%;
+    margin-bottom: 2em;
+  }
+  .friendName {
+    font-size: 2em;
+  }
+}

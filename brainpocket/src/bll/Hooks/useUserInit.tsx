@@ -9,6 +9,7 @@ export function useUserInit() {
   const logout = () => {
     authAPI.logout();
     setIsAuth(false);
+    setUserData(null);
   };
   const handleLogin = (data: ServerAuthResponse): void => {
     if (data.resultCode === 0) {
