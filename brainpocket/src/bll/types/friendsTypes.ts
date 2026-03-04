@@ -1,3 +1,15 @@
+import type { UserData } from "./appTypes";
+
+//Пропсы
+export type FriendsProps = {
+  userData: UserData;
+};
+export type FriendsElementProps = {
+  friend: Friend;
+  loginUserId: number;
+  unfollow: (id: number) => void;
+};
+
 export type Friends = Friend[];
 
 export type Friend = {

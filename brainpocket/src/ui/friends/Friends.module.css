@@ -1,0 +1,21 @@
+.userList {
+  height: 90%;
+  margin-left: 2em;
+  margin-top: 2em;
+}
+.selectPage {
+  font-size: 20px;
+  margin-left: 32px;
+  margin-top: 32px;
+}
+.active {
+  font-weight: 700;
+  margin: 3px;
+  color: rgb(2, 37, 3);
+  cursor: pointer;
+}
+.pending {
+  color: rgb(4, 61, 7);
+  margin: 3px;
+  cursor: pointer;
+}

@@ -8,8 +8,8 @@ function Header({ isAuth, logout }: HeaderProps) {
         <img src="/logo.jpg" alt="logo" />
       </div>
       <div className={styles.text}>
-        <span className={styles.headerText}>Замечательная социальная сеть </span>
-        <span className={styles.nameText}>facekontakt</span>
+        <span className={styles.headerText}>Замечательная социальная сеть</span>
+        <span className={styles.textlogo}>facekontakt</span>
       </div>
       {isAuth && (
         <div className={styles.loginBlock}>
