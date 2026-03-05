@@ -14,7 +14,7 @@ import WithAuthRedirect from "./bll/HOCs/withAuthRedirect";
 import { Friends } from "./ui/friends/Friends";
 
 function App() {
-  const { isAuth, userData, loginError, handleLogin, logout } = useUserInit();
+  const { isAuth, userData, loginError, handleLogin, logout, setFriends } = useUserInit();
   return (
     <div className="app-wrapper">
       <Header isAuth={isAuth} logout={logout} />
@@ -38,11 +38,15 @@ function App() {
             <Route path="/settings" element={<WithAuthRedirect isAuth={isAuth} component={<Settings />} />} />
             <Route
               path="/users"
-              element={<WithAuthRedirect isAuth={isAuth} component={<Users userData={userData} />} />}
+              element={
+                <WithAuthRedirect isAuth={isAuth} component={<Users userData={userData} setFriends={setFriends} />} />
+              }
             />
             <Route
               path="/friends"
-              element={<WithAuthRedirect isAuth={isAuth} component={<Friends userData={userData} />} />}
+              element={
+                <WithAuthRedirect isAuth={isAuth} component={<Friends userData={userData} setFriends={setFriends} />} />
+              }
             />
             <Route path="/login" element={<Login isAuth={isAuth} handleLogin={handleLogin} error={loginError} />} />
             <Route

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import type { FriendsElementProps } from "../../../bll/types/friendsTypes";
 import styles from "./FriendsElement.module.css";
 
-export function FriendsElement({ friend, loginUserId, unfollow }: FriendsElementProps) {
+export function FriendsElement({ friend, unfollow, disabledButton }: FriendsElementProps) {
   return (
     <div className={styles.usrObj}>
       <div className={styles.user_info}>
@@ -17,8 +17,8 @@ export function FriendsElement({ friend, loginUserId, unfollow }: FriendsElement
         <div>
           <button
             className={styles.btnunfollow}
-            onClick={() => unfollow(loginUserId)}
-            // disabled={props.usersIsPushing.some((id) => id === props.id)}
+            onClick={() => unfollow(friend.id)}
+            disabled={disabledButton(friend.id)}
           >
             удалить из друзей
           </button>

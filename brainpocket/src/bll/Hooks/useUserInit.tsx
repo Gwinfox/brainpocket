@@ -29,5 +29,8 @@ export function useUserInit() {
   useEffect(() => {
     authAPI.me().then((res) => handleCoockies(res));
   }, []);
-  return { isAuth, userData, loginError, handleLogin, logout };
+  const setFriends = (newFriends: number[]) => {
+    setUserData({ ...userData!, friends: newFriends });
+  };
+  return { isAuth, userData, loginError, handleLogin, logout, setFriends };
 }

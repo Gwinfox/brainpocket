@@ -2,17 +2,43 @@ import { useEffect, useState } from "react";
 import { usersAPI } from "../../../dal/api";
 import type { Users } from "../../types/usersTypes";
 
-export function useGetUsers() {
-  const [users, setUsers] = useState<Users>([]);
+export function useGetUsers(
+  loginUserId: number,
+  friends: number[],
+  setFriends: (friends: number[]) => void,
+  isPushing: (id: number) => void,
+  isNotPushing: (id: number) => void
+) {
+  const [usersList, setUsersList] = useState<Users | null>(null);
   const [totalUsersCount, setTotalUsersCount] = useState<number>(0);
   const onPageChanged = (currentPage: number, pageSize: number) => {
-    usersAPI.getUsers(currentPage, pageSize).then((res) => setUsers(res.items));
+    usersAPI.getUsers(currentPage, pageSize).then((res) => setUsersList(res.items));
+  };
+  const unfollow = (userId: number) => {
+    const newFriends = friends.filter((f) => f !== userId);
+    isPushing(userId);
+    setFriends(newFriends);
+    usersAPI.unfollow(newFriends, loginUserId).then((res) => {
+      if (res.resultCode === 0) {
+        isNotPushing(userId);
+      }
+    });
+  };
+  const follow = (userId: number) => {
+    const newFriends = [...friends, userId];
+    isPushing(userId);
+    setFriends(newFriends);
+    usersAPI.follow(newFriends, loginUserId).then((res) => {
+      if (res.resultCode === 0) {
+        isNotPushing(userId);
+      }
+    });
   };
   useEffect(() => {
     usersAPI.getUsers().then((res) => {
-      setUsers(res.items);
+      setUsersList(res.items);
       setTotalUsersCount(res.totalCount);
     });
   }, []);
-  return { users, totalUsersCount, onPageChanged };
+  return { usersList, totalUsersCount, onPageChanged, unfollow, follow };
 }

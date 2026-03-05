@@ -2,11 +2,15 @@ import type { UserData } from "./appTypes";
 
 // Пропсы
 export type UsersProps = {
-  userData: UserData | null;
+  userData: UserData;
+  setFriends: (friends: number[]) => void;
 };
 export type Users = Array<User>;
 export type UsersElementProps = {
   user: User;
+  follow: (id: number) => void;
+  unfollow: (id: number) => void;
+  disabledButton: (id: number) => boolean;
   loginUserFriends: number[];
 };
 export type PaginatorProps = {
@@ -15,7 +19,7 @@ export type PaginatorProps = {
   onPageChanged: (currentPage: number, pageSize: number) => void;
 };
 
-type User = {
+export type User = {
   id: number;
   firstName: string;
   lastName: string;

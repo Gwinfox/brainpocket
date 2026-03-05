@@ -3,11 +3,12 @@ import type { UserData } from "./appTypes";
 //Пропсы
 export type FriendsProps = {
   userData: UserData;
+  setFriends: (friends: number[]) => void;
 };
 export type FriendsElementProps = {
   friend: Friend;
-  loginUserId: number;
   unfollow: (id: number) => void;
+  disabledButton: (id: number) => boolean;
 };
 
 export type Friends = Friend[];
