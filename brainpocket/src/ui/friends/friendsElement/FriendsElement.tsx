@@ -27,7 +27,7 @@ export function FriendsElement({ friend, unfollow, disabledButton }: FriendsElem
       <NavLink className={styles.user_avatar} to={"/profile/" + friend.id}>
         <img
           className={styles.avatar}
-          src={friend.photos.avatar ? friend.photos.avatar : undefined}
+          src={friend.photos.avatar ? friend.photos.avatar : "/img/unnamed.png"}
           alt={friend.firstName}
         />
       </NavLink>

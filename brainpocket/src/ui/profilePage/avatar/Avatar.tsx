@@ -10,7 +10,7 @@ export function Avatar({ avatar, userId, loginUserId }: AvatarProps) {
   }
   return (
     <div className={styles.profile_img}>
-      {avatar ? <img className={styles.avatar} src={avatar} alt="avatar" /> : null}
+      {<img className={styles.avatar} src={avatar ? avatar : "/img/unnamed.png"} alt="avatar" />}
       {loginUserId === userId && (
         <label className={styles.btn_newImg}>
           <input type="file" onChange={ChangePhoto}></input> изменить аватар

@@ -15,46 +15,51 @@ import { Friends } from "./ui/friends/Friends";
 
 function App() {
   const { isAuth, userData, loginError, handleLogin, logout, setFriends } = useUserInit();
+  if (!userData) {
+    return (
+      <div className="app-wrapper">
+        <Header isAuth={isAuth} logout={logout} />
+        <div className="content">
+          <Login isAuth={isAuth} handleLogin={handleLogin} error={loginError} />;
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="app-wrapper">
       <Header isAuth={isAuth} logout={logout} />
-      {userData && <Navbar userData={userData} />}
+      <Navbar userData={userData} />
       <div className="content">
-        {userData && (
-          <Routes>
-            <Route
-              path="/profile"
-              element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}
-            />
-            <Route
-              path="/dialogs/*"
-              element={<WithAuthRedirect isAuth={isAuth} component={<Dialogs userData={userData} />} />}
-            />
-            <Route
-              path="/news"
-              element={<WithAuthRedirect isAuth={isAuth} component={<News userData={userData} />} />}
-            />
-            <Route path="/music" element={<WithAuthRedirect isAuth={isAuth} component={<Music />} />} />
-            <Route path="/settings" element={<WithAuthRedirect isAuth={isAuth} component={<Settings />} />} />
-            <Route
-              path="/users"
-              element={
-                <WithAuthRedirect isAuth={isAuth} component={<Users userData={userData} setFriends={setFriends} />} />
-              }
-            />
-            <Route
-              path="/friends"
-              element={
-                <WithAuthRedirect isAuth={isAuth} component={<Friends userData={userData} setFriends={setFriends} />} />
-              }
-            />
-            <Route path="/login" element={<Login isAuth={isAuth} handleLogin={handleLogin} error={loginError} />} />
-            <Route
-              path="/"
-              element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}
-            />
-          </Routes>
-        )}
+        <Routes>
+          <Route
+            path="/profile/:userId?"
+            element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}
+          />
+          <Route
+            path="/dialogs/*"
+            element={<WithAuthRedirect isAuth={isAuth} component={<Dialogs userData={userData} />} />}
+          />
+          <Route path="/news" element={<WithAuthRedirect isAuth={isAuth} component={<News userData={userData} />} />} />
+          <Route path="/music" element={<WithAuthRedirect isAuth={isAuth} component={<Music />} />} />
+          <Route path="/settings" element={<WithAuthRedirect isAuth={isAuth} component={<Settings />} />} />
+          <Route
+            path="/users"
+            element={
+              <WithAuthRedirect isAuth={isAuth} component={<Users userData={userData} setFriends={setFriends} />} />
+            }
+          />
+          <Route
+            path="/friends"
+            element={
+              <WithAuthRedirect isAuth={isAuth} component={<Friends userData={userData} setFriends={setFriends} />} />
+            }
+          />
+          <Route path="/login" element={<Login isAuth={isAuth} handleLogin={handleLogin} error={loginError} />} />
+          <Route
+            path="/"
+            element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}
+          />
+        </Routes>
       </div>
     </div>
   );

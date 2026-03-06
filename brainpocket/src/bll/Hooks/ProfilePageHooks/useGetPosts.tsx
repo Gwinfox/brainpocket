@@ -6,7 +6,7 @@ export function useGetPosts(id: number) {
   const [posts, setPosts] = useState<Array<Post> | null>(null);
   useEffect(() => {
     profileAPI.getPosts(id).then((res) => setPosts(res.reverse()));
-  }, []);
+  }, [id]);
   function deletePost(id: number) {
     profileAPI.deletePost(id);
     setPosts(posts!.filter((post) => post.id !== id));

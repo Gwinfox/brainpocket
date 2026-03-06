@@ -28,7 +28,7 @@ export const authAPI = {
   },
 };
 export const profileAPI = {
-  getProfile(userId: number | undefined) {
+  getProfile(userId: string | number) {
     return instance.get("/profile/" + userId).then((res) => res.data);
   },
   updateUserAvatar(file: File, userId: number) {

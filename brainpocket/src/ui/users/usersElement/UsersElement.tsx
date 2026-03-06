@@ -19,7 +19,11 @@ export function UsersElement({ loginUserFriends, user, follow, unfollow, disable
         <div>{button}</div>
       </div>
       <NavLink className={styles.user_avatar} to={"/profile/" + user.id}>
-        <img className={styles.avatar} src={user.photos.avatar ? user.photos.avatar : undefined} alt={user.firstName} />
+        <img
+          className={styles.avatar}
+          src={user.photos.avatar ? user.photos.avatar : "/img/unnamed.png"}
+          alt={user.firstName}
+        />
       </NavLink>
     </div>
   );

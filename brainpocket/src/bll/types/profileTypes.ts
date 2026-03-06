@@ -2,7 +2,7 @@ import type { UserData } from "./appTypes";
 
 //Пропсы
 export type ProfilePageProps = {
-  userData: UserData | null;
+  userData: UserData;
 };
 export type ProfileProps = {
   profile: Profile;
