@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { profileAPI } from "../../../dal/api";
 import type { Profile } from "../../types/profileTypes";
 import type { UserData } from "../../types/appTypes";
