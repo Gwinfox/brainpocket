@@ -6,14 +6,7 @@ const instance = axios.create({
   baseURL: "http://localhost:5000/api",
   withCredentials: true,
 });
-instance.interceptors.response.use(
-  (res) => {
-    return res;
-  },
-  (err) => {
-    return err;
-  }
-);
+
 export const authAPI = {
   Login(data: LoginFormData) {
     return instance.post("auth/login", { data }).then((res) => res.data);

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { authAPI } from "../../dal/api";
 import type { ServerAuthResponse, UserData } from "../types/appTypes";
 
+
 export function useUserInit() {
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [userData, setUserData] = useState<null | UserData>(null);

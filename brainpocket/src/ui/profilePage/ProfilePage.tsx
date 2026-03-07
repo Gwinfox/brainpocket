@@ -7,6 +7,7 @@ import { Preloader } from "../Preloader/Preloader";
 
 function ProfilePage({ userData }: ProfilePageProps) {
   const { profile } = useProfileData(userData);
+
   if (!profile) {
     return <Preloader />;
   }

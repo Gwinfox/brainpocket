@@ -12,9 +12,15 @@ import Login from "./ui/login/Login";
 import { useUserInit } from "./bll/Hooks/useUserInit";
 import WithAuthRedirect from "./bll/HOCs/withAuthRedirect";
 import { Friends } from "./ui/friends/Friends";
+import { useGetError } from "./bll/Hooks/useGetError";
+import Error from "./ui/Error/Error";
 
 function App() {
+  const { error } = useGetError();
   const { isAuth, userData, loginError, handleLogin, logout, setFriends } = useUserInit();
+  if (error) {
+    return <Error error={error} />;
+  }
   if (!userData) {
     return (
       <div className="app-wrapper">
