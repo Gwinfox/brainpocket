@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { newsAPI } from "../../../dal/api";
 import type { News } from "../../types/newsTypes";
+import { useGetError } from "../useGetError";
 
 export function useGetNews(friends: number[]) {
+  const { setError } = useGetError();
   const [page, setPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
   const [hasMore, setHasMore] = useState<boolean>(false);
@@ -14,10 +16,13 @@ export function useGetNews(friends: number[]) {
     // Загружаем новые посты когда до низа документа меньше 100px
     if (scrollHeight - scrollTop < 100) {
       setPage(page + 1);
-      newsAPI.getNews(friends, page + 1, 10).then((res) => {
-        setNews([...news, ...res.news]);
-        setHasMore(res.hasMore);
-      });
+      newsAPI
+        .getNews(friends, page + 1, 10)
+        .then((res) => {
+          setNews([...news, ...res.news]);
+          setHasMore(res.hasMore);
+        })
+        .catch((err) => setError(err));
     }
   }, [loading, hasMore, page, friends, news]);
   useEffect(() => {
@@ -30,7 +35,8 @@ export function useGetNews(friends: number[]) {
         setNews(res.news);
         setHasMore(res.hasMore);
       })
-      .then(() => setLoading(false));
+      .then(() => setLoading(false))
+      .catch((err) => setError(err));
   }, []);
   // Обработчик скролла
   useEffect(() => {

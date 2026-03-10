@@ -2,7 +2,7 @@ import type { UserData } from "./appTypes";
 
 // Пропсы
 export type NewsProps = {
-  userData: UserData | null;
+  userData: UserData;
 };
 export type NewsElementProps = {
   post: string;

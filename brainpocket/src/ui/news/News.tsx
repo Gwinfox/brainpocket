@@ -5,9 +5,7 @@ import styles from "./News.module.css";
 import { NewsElement } from "./NewsElement/NewsElement";
 
 function News({ userData }: NewsProps) {
-  if (!userData) {
-    return null;
-  }
+
   const { news, loading, hasMore } = useGetNews(userData.friends);
   return (
     <div className={styles.newsBlock}>

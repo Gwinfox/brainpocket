@@ -12,7 +12,7 @@ export function ErrorProvider({ children }: { children: React.ReactNode }) {
   const [error, setError] = useState<SimplifiedError | null>(null);
   return <ErrorContext.Provider value={{ error, setError }}>{children}</ErrorContext.Provider>;
 }
-//Хук
+//Хук для доступа к контексту
 export function useGetError() {
   const context = useContext(ErrorContext);
   if (!context) {

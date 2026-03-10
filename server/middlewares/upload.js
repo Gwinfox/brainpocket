@@ -4,7 +4,7 @@ const path = require("path");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const uploadPath = path.join(__dirname, '../../public/img/uploads');
+    const uploadPath = path.join(__dirname, '../../brainpocket/public/img/uploads');
     cb(null, uploadPath); // папка для сохранения
   },
   filename: (req, file, cb) => {

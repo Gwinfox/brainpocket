@@ -16,7 +16,7 @@ instance.interceptors.response.use(
     // Если ошибка
     const simplifiedError: SimplifiedError = {
       // Создаем базовый объект ошибки
-      message: "Что-то пошло не так",
+      message: "Упс, всё сломалось",
     };
     if (error.response) {
       // Если сервер вернул ошибку
@@ -74,7 +74,7 @@ export const profileAPI = {
   deletePost(postId: number) {
     return instance.delete("/profile/deletepost/" + postId);
   },
-  addPostAPI(id: number, post: string) {
+  addPost(id: number, post: string) {
     return instance.post("/profile/addpost", { id, post });
   },
 };

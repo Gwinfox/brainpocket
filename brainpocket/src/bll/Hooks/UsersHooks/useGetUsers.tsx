@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { usersAPI } from "../../../dal/api";
 import type { Users } from "../../types/usersTypes";
+import { useGetError } from "../useGetError";
 
 export function useGetUsers(
   loginUserId: number,
@@ -9,36 +10,49 @@ export function useGetUsers(
   isPushing: (id: number) => void,
   isNotPushing: (id: number) => void
 ) {
+  const { setError } = useGetError();
   const [usersList, setUsersList] = useState<Users | null>(null);
   const [totalUsersCount, setTotalUsersCount] = useState<number>(0);
   const onPageChanged = (currentPage: number, pageSize: number) => {
-    usersAPI.getUsers(currentPage, pageSize).then((res) => setUsersList(res.items));
+    usersAPI
+      .getUsers(currentPage, pageSize)
+      .then((res) => setUsersList(res.items))
+      .catch((err) => setError(err));
   };
   const unfollow = (userId: number) => {
     const newFriends = friends.filter((f) => f !== userId);
     isPushing(userId);
     setFriends(newFriends);
-    usersAPI.unfollow(newFriends, loginUserId).then((res) => {
-      if (res.resultCode === 0) {
-        isNotPushing(userId);
-      }
-    });
+    usersAPI
+      .unfollow(newFriends, loginUserId)
+      .then((res) => {
+        if (res.resultCode === 0) {
+          isNotPushing(userId);
+        }
+      })
+      .catch((err) => setError(err));
   };
   const follow = (userId: number) => {
     const newFriends = [...friends, userId];
     isPushing(userId);
     setFriends(newFriends);
-    usersAPI.follow(newFriends, loginUserId).then((res) => {
-      if (res.resultCode === 0) {
-        isNotPushing(userId);
-      }
-    });
+    usersAPI
+      .follow(newFriends, loginUserId)
+      .then((res) => {
+        if (res.resultCode === 0) {
+          isNotPushing(userId);
+        }
+      })
+      .catch((err) => setError(err));
   };
   useEffect(() => {
-    usersAPI.getUsers().then((res) => {
-      setUsersList(res.items);
-      setTotalUsersCount(res.totalCount);
-    });
+    usersAPI
+      .getUsers()
+      .then((res) => {
+        setUsersList(res.items);
+        setTotalUsersCount(res.totalCount);
+      })
+      .catch((err) => setError(err));
   }, []);
   return { usersList, totalUsersCount, onPageChanged, unfollow, follow };
 }

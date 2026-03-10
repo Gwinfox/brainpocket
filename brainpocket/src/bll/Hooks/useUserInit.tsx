@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { authAPI } from "../../dal/api";
 import type { ServerAuthResponse, UserData } from "../types/appTypes";
-
+import { useGetError } from "./useGetError";
 
 export function useUserInit() {
+  const { setError } = useGetError();
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [userData, setUserData] = useState<null | UserData>(null);
   const [loginError, setLoginError] = useState<string | null>(null);
   const logout = () => {
-    authAPI.logout();
+    authAPI.logout().catch((err) => setError(err));
     setIsAuth(false);
     setUserData(null);
   };
@@ -28,7 +29,10 @@ export function useUserInit() {
     }
   };
   useEffect(() => {
-    authAPI.me().then((res) => handleCoockies(res));
+    authAPI
+      .me()
+      .then((res) => handleCoockies(res))
+      .catch((err) => setError(err));
   }, []);
   const setFriends = (newFriends: number[]) => {
     setUserData({ ...userData!, friends: newFriends });

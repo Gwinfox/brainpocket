@@ -37,7 +37,7 @@ module.exports = {
       const originalPath = req.file.path;
 
       // Абсолютный путь для оптимизированного изображения
-      const optimizedPath = path.join(__dirname, "../../public/img/avatars", filename);
+      const optimizedPath = path.join(__dirname, "../../brainpocket/public/img/avatars", filename);
       const publicUrl = `/img/avatars/${filename}`;
       // Оптимизация изображения
       await sharp(originalPath)

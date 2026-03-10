@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { profileAPI } from "../../../dal/api";
+import { useGetError } from "../useGetError";
 
 export function useChangeStatus(loginUserId: number, userId: number, status: string) {
+  const { setError } = useGetError();
   const [editMode, setEditMode] = useState<boolean>(false);
   const [statusText, setStatusText] = useState<string>(status);
   const handleDoubleClick = () => {
@@ -11,7 +13,7 @@ export function useChangeStatus(loginUserId: number, userId: number, status: str
     setStatusText(e.currentTarget.value);
   };
   const setNewStatus = () => {
-    profileAPI.updateStatus(statusText, loginUserId);
+    profileAPI.updateStatus(statusText, loginUserId).catch((err) => setError(err));
     setEditMode(false);
   };
   useEffect(() => {
