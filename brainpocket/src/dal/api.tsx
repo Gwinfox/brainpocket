@@ -1,11 +1,39 @@
 import axios from "axios";
-import type { LoginFormData } from "../bll/Hooks/useLoginData";
+import type { LoginFormData } from "../bll/types/loginTypes";
 import type { Contacts } from "../bll/types/profileTypes";
+import type { SimplifiedError } from "../bll/types/errorTypes";
 
 const instance = axios.create({
   baseURL: "http://localhost:5000/api",
   withCredentials: true,
 });
+//Ловим ошибки, формируем упрощенную ошибку
+instance.interceptors.response.use(
+  (response) => {
+    return response; // Возвращаем res если все хорошо
+  },
+  (error) => {
+    // Если ошибка
+    const simplifiedError: SimplifiedError = {
+      // Создаем базовый объект ошибки
+      message: "Что-то пошло не так",
+    };
+    if (error.response) {
+      // Если сервер вернул ошибку
+      simplifiedError.status = error.response.status; // Берем код ошибки
+      if (error.response.data?.error) {
+        simplifiedError.message = error.response.data.error; // Если есть сообщение, берем и его
+      }
+    } else if (error.request) {
+      // Если нет соединения с сервером
+      simplifiedError.status = error.request.status;
+      simplifiedError.message = "Нет связи с сервером";
+    } else {
+      simplifiedError.message = "Неизвестная ошибка";
+    }
+    return Promise.reject(simplifiedError);
+  }
+);
 
 export const authAPI = {
   Login(data: LoginFormData) {

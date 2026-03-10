@@ -1,17 +1,11 @@
 import { useForm } from "react-hook-form";
 import styles from "./Login.module.css";
 import { Navigate } from "react-router-dom";
-import type { ServerAuthResponse } from "../../bll/Hooks/useUserInit";
-import { useLoginData, type LoginFormData } from "../../bll/Hooks/useLoginData";
+import { useLoginData } from "../../bll/Hooks/useLoginData";
+import type { LoginFormData, LoginProps } from "../../bll/types/loginTypes";
 
-type Props = {
-  isAuth: boolean;
-  error: string | null;
-  handleLogin: (data: ServerAuthResponse) => void;
-};
-
-function Login({ isAuth, error, handleLogin }: Props) {
-  const onSubmit  = useLoginData(handleLogin);
+function Login({ isAuth, loginError, handleLogin }: LoginProps) {
+  const onSubmit = useLoginData(handleLogin);
   const {
     register,
     handleSubmit,
@@ -55,7 +49,7 @@ function Login({ isAuth, error, handleLogin }: Props) {
       </div>
       {errors.login && <div className={styles.error}>{errors.login.message}</div>}
       {errors.password && <div className={styles.error}>{errors.password.message}</div>}
-      {error && <div className={styles.error}>{error}</div>}
+      {loginError && <div className={styles.error}>{loginError}</div>}
     </form>
   );
 }

@@ -26,7 +26,7 @@ function App() {
       <div className="app-wrapper">
         <Header isAuth={isAuth} logout={logout} />
         <div className="content">
-          <Login isAuth={isAuth} handleLogin={handleLogin} error={loginError} />;
+          <Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />;
         </div>
       </div>
     );
@@ -60,7 +60,7 @@ function App() {
               <WithAuthRedirect isAuth={isAuth} component={<Friends userData={userData} setFriends={setFriends} />} />
             }
           />
-          <Route path="/login" element={<Login isAuth={isAuth} handleLogin={handleLogin} error={loginError} />} />
+          <Route path="/login" element={<Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />} />
           <Route
             path="/"
             element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}
