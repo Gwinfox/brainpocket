@@ -128,7 +128,7 @@ module.exports = {
         const filename = req.file.filename; // Уже содержит uuid + расширение из multer
         publicUrl = `/img/avatars/${filename}`;
         const originalPath = req.file.path;
-        const optimizedPath = path.join(__dirname, "../../public/img/avatars", filename);
+        const optimizedPath = path.join(__dirname, "../../brainpocket/public/img/avatars", filename);
         await sharp(originalPath)
           .resize(300, 400) // изменение размера
           .jpeg({ quality: 80 }) // для JPEG
