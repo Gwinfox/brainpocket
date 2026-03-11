@@ -5,7 +5,7 @@ import type { ChangeEvent } from "react";
 import { useGetError } from "../useGetError";
 
 export function useChangeAvatar(loginUserId: number) {
-  const { setError } = useGetError();
+  const { setGlobalError } = useGetError();
   const [isCompressing, setIsCompressing] = useState(false);
   // Функция для сжатия фото
   const compressImage = async (file: File | undefined) => {
@@ -35,7 +35,7 @@ export function useChangeAvatar(loginUserId: number) {
       const selectedPhoto = target.files?.[0];
       const compressedPhoto = await compressImage(selectedPhoto);
       if (compressedPhoto) {
-        profileAPI.updateUserAvatar(compressedPhoto, loginUserId).catch((err) => setError(err));
+        profileAPI.updateUserAvatar(compressedPhoto, loginUserId).catch((err) => setGlobalError(err));
       }
     }
   };

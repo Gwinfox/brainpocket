@@ -4,12 +4,12 @@ import type { ServerAuthResponse, UserData } from "../types/appTypes";
 import { useGetError } from "./useGetError";
 
 export function useUserInit() {
-  const { setError } = useGetError();
+  const { setGlobalError } = useGetError();
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [userData, setUserData] = useState<null | UserData>(null);
   const [loginError, setLoginError] = useState<string | null>(null);
   const logout = () => {
-    authAPI.logout().catch((err) => setError(err));
+    authAPI.logout().catch((err) => setGlobalError(err));
     setIsAuth(false);
     setUserData(null);
   };
@@ -32,7 +32,7 @@ export function useUserInit() {
     authAPI
       .me()
       .then((res) => handleCoockies(res))
-      .catch((err) => setError(err));
+      .catch((err) => setGlobalError(err));
   }, []);
   const setFriends = (newFriends: number[]) => {
     setUserData({ ...userData!, friends: newFriends });

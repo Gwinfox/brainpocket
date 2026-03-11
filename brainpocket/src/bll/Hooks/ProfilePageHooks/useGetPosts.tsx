@@ -4,16 +4,16 @@ import type { Post } from "../../types/profileTypes";
 import { useGetError } from "../useGetError";
 
 export function useGetPosts(id: number) {
-  const { setError } = useGetError();
+  const { setGlobalError } = useGetError();
   const [posts, setPosts] = useState<Array<Post> | null>(null);
   useEffect(() => {
     profileAPI
       .getPosts(id)
       .then((res) => setPosts(res.reverse()))
-      .catch((err) => setError(err));
+      .catch((err) => setGlobalError(err));
   }, [id]);
   function deletePost(id: number) {
-    profileAPI.deletePost(id).catch((err) => setError(err));
+    profileAPI.deletePost(id).catch((err) => setGlobalError(err));
     setPosts(posts!.filter((post) => post.id !== id));
   }
   function addPost(loginUserId: number, post: string) {
@@ -21,7 +21,7 @@ export function useGetPosts(id: number) {
       profileAPI
         .getPosts(loginUserId)
         .then((res) => setPosts(res.reverse()))
-        .catch((err) => setError(err))
+        .catch((err) => setGlobalError(err))
     );
   }
   function addLike(id: number): Promise<void> {
@@ -30,7 +30,7 @@ export function useGetPosts(id: number) {
       .then(() => {
         setPosts(posts!.map((post) => (post.id === id ? { ...post, likes: post.likes + 1 } : post)));
       })
-      .catch((err) => setError(err));
+      .catch((err) => setGlobalError(err));
   }
   return { posts, deletePost, addPost, addLike };
 }

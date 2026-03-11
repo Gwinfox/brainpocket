@@ -3,7 +3,7 @@ import { profileAPI } from "../../../dal/api";
 import { useGetError } from "../useGetError";
 
 export function useChangeStatus(loginUserId: number, userId: number, status: string) {
-  const { setError } = useGetError();
+  const { setGlobalError } = useGetError();
   const [editMode, setEditMode] = useState<boolean>(false);
   const [statusText, setStatusText] = useState<string>(status);
   const handleDoubleClick = () => {
@@ -13,7 +13,7 @@ export function useChangeStatus(loginUserId: number, userId: number, status: str
     setStatusText(e.currentTarget.value);
   };
   const setNewStatus = () => {
-    profileAPI.updateStatus(statusText, loginUserId).catch((err) => setError(err));
+    profileAPI.updateStatus(statusText, loginUserId).catch((err) => setGlobalError(err));
     setEditMode(false);
   };
   useEffect(() => {

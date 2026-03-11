@@ -10,14 +10,14 @@ export function useGetUsers(
   isPushing: (id: number) => void,
   isNotPushing: (id: number) => void
 ) {
-  const { setError } = useGetError();
+  const { setGlobalError } = useGetError();
   const [usersList, setUsersList] = useState<Users | null>(null);
   const [totalUsersCount, setTotalUsersCount] = useState<number>(0);
   const onPageChanged = (currentPage: number, pageSize: number) => {
     usersAPI
       .getUsers(currentPage, pageSize)
       .then((res) => setUsersList(res.items))
-      .catch((err) => setError(err));
+      .catch((err) => setGlobalError(err));
   };
   const unfollow = (userId: number) => {
     const newFriends = friends.filter((f) => f !== userId);
@@ -30,7 +30,7 @@ export function useGetUsers(
           isNotPushing(userId);
         }
       })
-      .catch((err) => setError(err));
+      .catch((err) => setGlobalError(err));
   };
   const follow = (userId: number) => {
     const newFriends = [...friends, userId];
@@ -43,7 +43,7 @@ export function useGetUsers(
           isNotPushing(userId);
         }
       })
-      .catch((err) => setError(err));
+      .catch((err) => setGlobalError(err));
   };
   useEffect(() => {
     usersAPI
@@ -52,7 +52,7 @@ export function useGetUsers(
         setUsersList(res.items);
         setTotalUsersCount(res.totalCount);
       })
-      .catch((err) => setError(err));
+      .catch((err) => setGlobalError(err));
   }, []);
   return { usersList, totalUsersCount, onPageChanged, unfollow, follow };
 }

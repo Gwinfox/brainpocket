@@ -1,77 +1,21 @@
-import { useRef, useState } from "react";
 import styles from "./Registration.module.css";
-import imageCompression from "browser-image-compression";
 import { useForm } from "react-hook-form";
 import type { RegistrationFormFields } from "../../bll/types/registrationTypes";
-import { authAPI } from "../../dal/api";
 import { inputField } from "../../bll/inputRegistrationField";
+import { useGetCanvasReg } from "../../bll/Hooks/RegistrationHooks/useGetCanvasReg";
+import { useGetCompressedPhoto } from "../../bll/Hooks/RegistrationHooks/useGetCompressedPhoto";
+import { useGetHandleSubmit } from "../../bll/Hooks/RegistrationHooks/useGetHandleSubmit";
 
 export function Registration() {
-  const [compressedFile, setCompressedFile] = useState<File | null>(null);
-  const [isCompressing, setIsCompressing] = useState<boolean>(false);
-  // Ссылка на canvas
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  // Функция для сжатия фото
-  const compressImage = async (file: File) => {
-    // Настройки сжатия
-    const options = {
-      maxSizeMB: 1, // Максимальный размер в Mb
-      maxWidthOrHeight: 800, // Максимальные высота или ширина
-      useWebWorker: true, // Использовать фоновый процесс для скорости
-      fileType: "image/jpeg", // Формат на выходе
-    };
-    try {
-      setIsCompressing(true);
-      // Сжимаем изображение
-      return await imageCompression(file, options);
-    } catch (error) {
-      return file; // Если не получилось, возвращаем оригинал
-    } finally {
-      setIsCompressing(false);
-    }
-  };
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.currentTarget.files?.[0]; // Получаем файл
-    if (file) {
-      const compressed = await compressImage(file); // Сжимаем файл перед использованием
-      setCompressedFile(compressed);
-      // Показываем в canvas
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const img = new Image();
-        img.onload = () => {
-          drawImageToCanvas(img);
-        };
-        if (e.target && typeof e.target.result === "string") {
-          img.src = e.target.result;
-        }
-      };
-      reader.readAsDataURL(compressed);
-    }
-  };
-  const drawImageToCanvas = (img: HTMLImageElement) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    ctx!.clearRect(0, 0, canvas.width, canvas.height);
-    ctx!.drawImage(img, 0, 0, canvas.width, canvas.height);
-  };
-  const onSubmit = (data: RegistrationFormFields) => {
-    if (data.password !== data.repeatpassword) {
-      setError("root", {
-        type: "manual",
-        message: "пароли не совпадают",
-      });
-      return;
-    }
-    authAPI.registration({ ...data, file: compressedFile }); // Используем сжатый файл вместо оригинального
-  };
+  const { drawImageToCanvas, canvasRef } = useGetCanvasReg();
+  const { compressedFile, isCompressing, handleFileChange } = useGetCompressedPhoto(drawImageToCanvas);
   const {
     register,
     handleSubmit,
     setError,
     formState: { errors },
   } = useForm<RegistrationFormFields>();
+  const { onSubmit } = useGetHandleSubmit(compressedFile, setError);
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
       <div className={styles.enterData}>Введите свои данные</div>
@@ -130,7 +74,7 @@ export function Registration() {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          disabled={isCompressing} // Блокируем при сжатии
+          disabled={isCompressing}
         />
       </div>
       <div>

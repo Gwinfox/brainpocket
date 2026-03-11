@@ -6,13 +6,13 @@ import { useGetError } from "./useGetError";
 
 export function useLoginData(handleLogin: (data: ServerAuthResponse) => void) {
   const [formData, setFormData] = useState<null | LoginFormData>(null);
-  const { setError } = useGetError();
+  const { setGlobalError } = useGetError();
   useEffect(() => {
     formData &&
       authAPI
         .Login(formData)
         .then((res) => handleLogin(res))
-        .catch((err) => setError(err));
+        .catch((err) => setGlobalError(err));
   }, [formData]);
   const onSubmit = (data: LoginFormData): void => {
     setFormData(data);

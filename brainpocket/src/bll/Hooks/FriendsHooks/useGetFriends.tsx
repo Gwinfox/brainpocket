@@ -10,14 +10,14 @@ export function useGetFriends(
   isPushing: (id: number) => void,
   isNotPushing: (id: number) => void
 ) {
-  const { setError } = useGetError();
+  const { setGlobalError } = useGetError();
   const [friendsList, setFriendsList] = useState<Friends | null>(null);
   const [totalItemsCount, setTotalItemsCount] = useState(0);
   const onPageChanged = (currentPage: number, pageSize: number) => {
     friendsAPI
       .getFriends(friends, currentPage, pageSize)
       .then((res) => setFriendsList(res.items))
-      .catch((err) => setError(err));
+      .catch((err) => setGlobalError(err));
   };
   const unfollow = (userId: number) => {
     const newFriends = friends.filter((f) => f !== userId);
@@ -28,7 +28,7 @@ export function useGetFriends(
         setFriends(res.friends);
         isNotPushing(userId);
       })
-      .catch((err) => setError(err));
+      .catch((err) => setGlobalError(err));
   };
   useEffect(() => {
     friendsAPI
@@ -37,7 +37,7 @@ export function useGetFriends(
         setFriendsList(res.items);
         setTotalItemsCount(res.totalCount);
       })
-      .catch((err) => setError(err));
+      .catch((err) => setGlobalError(err));
   }, []);
   return { friendsList, totalItemsCount, onPageChanged, unfollow };
 }

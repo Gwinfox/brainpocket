@@ -10,7 +10,6 @@ export function SendMessage({ addMessage}: SendMessageProps) {
     formState: { errors },
   } = useForm<addMessageForm>();
   const onSubmit = (data:addMessageForm) => {
-    console.log(data)
     addMessage(data.newMessage);
     reset();
   };

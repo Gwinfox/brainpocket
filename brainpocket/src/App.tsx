@@ -17,10 +17,10 @@ import Error from "./ui/Error/Error";
 import { Registration } from "./ui/registration/Registration";
 
 function App() {
-  const { error } = useGetError();
+  const { globalError } = useGetError();
   const { isAuth, userData, loginError, handleLogin, logout, setFriends } = useUserInit();
-  if (error) {
-    return <Error error={error} />;
+  if (globalError) {
+    return <Error error={globalError} />;
   }
   if (!userData) {
     return (

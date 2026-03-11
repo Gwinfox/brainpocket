@@ -7,14 +7,14 @@ import { useGetError } from "../useGetError";
 
 export function useProfileData(userData: UserData) {
   const [profile, setProfile] = useState<null | Profile>(null);
-  const { setError } = useGetError();
+  const { setGlobalError } = useGetError();
   const { userId } = useParams();
   useEffect(() => {
     profileAPI
       .getProfile(userId || userData.userId)
       .then((res) => setProfile(res))
       .catch((err) => {
-        setError(err);
+        setGlobalError(err);
       });
   }, [userId]);
   return { profile };

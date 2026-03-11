@@ -4,14 +4,14 @@ import type { Dialogs } from "../../types/dialogsTypes";
 import { useGetError } from "../useGetError";
 
 export function useGetDialogs(userId: number | undefined) {
-  const { setError } = useGetError();
+  const { setGlobalError } = useGetError();
   const [dialogs, setDialogs] = useState<Dialogs | null>(null);
   useEffect(() => {
     userId &&
       dialogsAPI
         .getDialogs(userId)
         .then((res) => setDialogs(res))
-        .catch((err) => setError(err));
+        .catch((err) => setGlobalError(err));
   }, []);
   return { dialogs };
 }

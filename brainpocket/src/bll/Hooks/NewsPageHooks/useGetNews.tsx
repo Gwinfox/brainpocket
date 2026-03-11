@@ -4,7 +4,7 @@ import type { News } from "../../types/newsTypes";
 import { useGetError } from "../useGetError";
 
 export function useGetNews(friends: number[]) {
-  const { setError } = useGetError();
+  const { setGlobalError } = useGetError();
   const [page, setPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
   const [hasMore, setHasMore] = useState<boolean>(false);
@@ -22,7 +22,7 @@ export function useGetNews(friends: number[]) {
           setNews([...news, ...res.news]);
           setHasMore(res.hasMore);
         })
-        .catch((err) => setError(err));
+        .catch((err) => setGlobalError(err));
     }
   }, [loading, hasMore, page, friends, news]);
   useEffect(() => {
@@ -36,7 +36,7 @@ export function useGetNews(friends: number[]) {
         setHasMore(res.hasMore);
       })
       .then(() => setLoading(false))
-      .catch((err) => setError(err));
+      .catch((err) => setGlobalError(err));
   }, []);
   // Обработчик скролла
   useEffect(() => {
