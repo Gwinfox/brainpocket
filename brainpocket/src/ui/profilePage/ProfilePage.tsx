@@ -3,7 +3,7 @@ import type { ProfilePageProps } from "../../bll/types/profileTypes";
 import { useProfileData } from "../../bll/Hooks/ProfilePageHooks/useProfileData";
 import { Profile } from "./profile/Profile";
 import { Posts } from "./posts/Posts";
-import { Preloader } from "../Preloader/Preloader";
+import { Preloader } from "../preloader/Preloader";
 
 function ProfilePage({ userData }: ProfilePageProps) {
   const { profile } = useProfileData(userData);

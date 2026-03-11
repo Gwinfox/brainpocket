@@ -2,6 +2,7 @@ import axios from "axios";
 import type { LoginFormData } from "../bll/types/loginTypes";
 import type { Contacts } from "../bll/types/profileTypes";
 import type { SimplifiedError } from "../bll/types/errorTypes";
+import type { RegistrationFormFields } from "../bll/types/registrationTypes";
 
 const instance = axios.create({
   baseURL: "http://localhost:5000/api",
@@ -46,6 +47,16 @@ export const authAPI = {
     return instance.get("/auth/logout").then((res) => {
       return res.data;
     });
+  },
+  registration(data: RegistrationFormFields) {
+    const formData = new FormData();
+    data.file && formData.append("avatar", data.file);
+    for (let field in data) {
+      if (field !== "file") {
+        formData.append(field, data[field as keyof RegistrationFormFields] as string);
+      }
+    }
+    return instance.put("/auth/registration", formData).then((response) => response.data);
   },
 };
 export const profileAPI = {

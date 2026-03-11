@@ -1,6 +1,6 @@
 import { useChangeAvatar } from "../../../bll/Hooks/ProfilePageHooks/useChangeAvatar";
 import type { AvatarProps } from "../../../bll/types/profileTypes";
-import { Preloader } from "../../Preloader/Preloader";
+import { Preloader } from "../../preloader/Preloader";
 import styles from "./Avatar.module.css";
 
 export function Avatar({ avatar, userId, loginUserId }: AvatarProps) {

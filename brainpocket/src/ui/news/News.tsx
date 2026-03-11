@@ -1,6 +1,6 @@
 import { useGetNews } from "../../bll/Hooks/NewsPageHooks/useGetNews";
 import type { NewsProps } from "../../bll/types/newsTypes";
-import { Preloader } from "../Preloader/Preloader";
+import { Preloader } from "../preloader/Preloader";
 import styles from "./News.module.css";
 import { NewsElement } from "./NewsElement/NewsElement";
 

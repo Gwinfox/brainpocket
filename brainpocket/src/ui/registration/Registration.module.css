@@ -1,0 +1,76 @@
+.form {
+  position: absolute;
+  left: -0em;
+  right: 0em;
+  height: 110%;
+  border: 2px solid black;
+  background-color: rgb(198, 224, 247);
+}
+.enterData {
+  text-align: center;
+  font-size: calc(0.1vw + 1em);
+}
+.inputText {
+  font-size: calc(0.5vw + 1em);
+  margin-top: 1em;
+  margin-left: 1vw;
+  border-radius: 5px;
+}
+.text {
+  margin-left: 1em;
+  margin-top: 1em;
+  font-size: calc(0.2vw + 1em);
+  color: rgb(16, 16, 182);
+}
+.file {
+  margin-left: 2em;
+  margin-top: 1em;
+}
+.btn {
+  font-size: calc(1vw + 0.5em);
+  margin-left: 1vw;
+  margin-top: 10px;
+  width: calc(8vw + 6em);
+  height: calc(2vh + 1em);
+  color: white;
+  background-color: rgb(51, 51, 235);
+  border-radius: 0.3em;
+}
+.error {
+  margin-left: 1vw;
+  font-size: calc((1vh + 2vw) / 2);
+  color: red;
+}
+.errArea {
+  font-size: calc(0.5vw + 1em);
+  margin-top: 1em;
+  margin-left: 1vw;
+  border: 2px solid red;
+  border-radius: 5px;
+}
+.canvas {
+  position: absolute;
+  margin-left: 30vw;
+  margin-top: -50vh;
+  width: 15vw;
+  height: 40vh;
+  border: 2px solid black;
+}
+@media (max-width: 950px) {
+  .form {
+    margin: auto;
+    text-align: center;
+  }
+  .canvas {
+    position: relative;
+    width: 30vw;
+    height: 20vh;
+    margin-left: 5vw;
+    margin-top: 2vh;
+    border: 2px solid black;
+  }
+  .btn {
+    width: calc(15vw + 6em);
+    text-align: center;
+  }
+}

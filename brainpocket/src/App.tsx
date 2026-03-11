@@ -14,6 +14,7 @@ import WithAuthRedirect from "./bll/HOCs/withAuthRedirect";
 import { Friends } from "./ui/friends/Friends";
 import { useGetError } from "./bll/Hooks/useGetError";
 import Error from "./ui/Error/Error";
+import { Registration } from "./ui/registration/Registration";
 
 function App() {
   const { error } = useGetError();
@@ -26,7 +27,14 @@ function App() {
       <div className="app-wrapper">
         <Header isAuth={isAuth} logout={logout} />
         <div className="content">
-          <Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />;
+          <Routes>
+            <Route
+              path="/login"
+              element={<Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />}
+            />
+            <Route path="/registration" element={<WithAuthRedirect isAuth={!isAuth} component={<Registration />} />} />
+            <Route path="/" element={<Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />} />
+          </Routes>
         </div>
       </div>
     );
@@ -60,7 +68,7 @@ function App() {
               <WithAuthRedirect isAuth={isAuth} component={<Friends userData={userData} setFriends={setFriends} />} />
             }
           />
-          <Route path="/login" element={<Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />} />
+
           <Route
             path="/"
             element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}

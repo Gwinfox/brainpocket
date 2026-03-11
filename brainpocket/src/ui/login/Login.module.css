@@ -1,3 +1,21 @@
+.window {
+  height: 100vh;
+}
+.btn_reg {
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid black;
+  text-shadow: 1px 1px 1px #000;
+  font-size: calc(1vw + 0.5em);
+  float: right;
+  margin-top: 1vh;
+  margin-right: 1vw;
+  width: calc(6vw + 5em);
+  height: calc(1vh + 1em);
+  color: white;
+  background-color: rgb(247, 71, 79);
+  border-radius: 0.3em;
+}
 .form {
   position: absolute;
   border-radius: 5px;
