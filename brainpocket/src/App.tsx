@@ -34,6 +34,7 @@ function App() {
             />
             <Route path="/registration" element={<WithAuthRedirect isAuth={!isAuth} component={<Registration />} />} />
             <Route path="/" element={<Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />} />
+            <Route path="*" element={<Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />} />
           </Routes>
         </div>
       </div>
