@@ -27,6 +27,14 @@ module.exports = {
   getFriends: async (req, res) => {
     try {
       const arrFriends = req.body.friends;
+      if (arrFriends.length === 0) {
+        const items = [];
+        res.send({
+          items,
+          totalCount: items.length,
+          resultCode: 0,
+        });
+      }
       const placeholders = arrFriends.map(() => "?").join(",");
       const count = req.body.count || 5; //count - количество объектов в выводе
       const page = req.body.page || 1; // page - номер порции вывода

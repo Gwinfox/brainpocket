@@ -56,7 +56,7 @@ export const authAPI = {
         formData.append(field, data[field as keyof RegistrationFormFields] as string);
       }
     }
-    return instance.put("/auth/registration", formData).then((response) => response.data);
+    return instance.post("/auth/registration", formData).then((res) => res.data);
   },
 };
 export const profileAPI = {

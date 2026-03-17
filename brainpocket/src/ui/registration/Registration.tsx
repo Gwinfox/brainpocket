@@ -1,12 +1,12 @@
 import styles from "./Registration.module.css";
 import { useForm } from "react-hook-form";
-import type { RegistrationFormFields } from "../../bll/types/registrationTypes";
+import type { RegistrationFormFields, RegistrationProps } from "../../bll/types/registrationTypes";
 import { inputField } from "../../bll/inputRegistrationField";
 import { useGetCanvasReg } from "../../bll/Hooks/RegistrationHooks/useGetCanvasReg";
 import { useGetCompressedPhoto } from "../../bll/Hooks/RegistrationHooks/useGetCompressedPhoto";
 import { useGetHandleSubmit } from "../../bll/Hooks/RegistrationHooks/useGetHandleSubmit";
 
-export function Registration() {
+export function Registration({ setUserData }: RegistrationProps) {
   const { drawImageToCanvas, canvasRef } = useGetCanvasReg();
   const { compressedFile, isCompressing, handleFileChange } = useGetCompressedPhoto(drawImageToCanvas);
   const {
@@ -15,7 +15,7 @@ export function Registration() {
     setError,
     formState: { errors },
   } = useForm<RegistrationFormFields>();
-  const { onSubmit } = useGetHandleSubmit(compressedFile, setError);
+  const { onSubmit } = useGetHandleSubmit(compressedFile, setError, setUserData);
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
       <div className={styles.enterData}>Введите свои данные</div>

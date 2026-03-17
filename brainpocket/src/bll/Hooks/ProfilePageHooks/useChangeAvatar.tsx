@@ -4,7 +4,7 @@ import { profileAPI } from "../../../dal/api";
 import type { ChangeEvent } from "react";
 import { useGetError } from "../useGetError";
 
-export function useChangeAvatar(loginUserId: number, setPhoto: React.Dispatch<React.SetStateAction<string | null>>) {
+export function useChangeAvatar(loginUserId: number, changePhoto: (photo: string) => void) {
   const { setGlobalError } = useGetError();
   const [isCompressing, setIsCompressing] = useState(false);
   // Функция для сжатия фото
@@ -37,7 +37,7 @@ export function useChangeAvatar(loginUserId: number, setPhoto: React.Dispatch<Re
       if (compressedPhoto) {
         profileAPI
           .updateUserAvatar(compressedPhoto, loginUserId)
-          .then((res) => setPhoto(res.avatarUrl))
+          .then((res) => changePhoto(res.avatarUrl))
           .catch((err) => setGlobalError(err));
       }
     }

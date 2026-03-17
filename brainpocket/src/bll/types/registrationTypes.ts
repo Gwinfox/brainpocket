@@ -1,3 +1,11 @@
+import type { Dispatch, SetStateAction } from "react";
+import type { UserData } from "./appTypes";
+
+// Пропсы
+export type RegistrationProps = {
+  setUserData: Dispatch<SetStateAction<UserData | null>>;
+};
+
 export type RegistrationFormFields = {
   firstName: string;
   lastName: string;

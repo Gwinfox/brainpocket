@@ -37,5 +37,5 @@ export function useUserInit() {
   const setFriends = (newFriends: number[]) => {
     setUserData({ ...userData!, friends: newFriends });
   };
-  return { isAuth, userData, loginError, handleLogin, logout, setFriends };
+  return { isAuth, userData, loginError, handleLogin, logout, setFriends, setUserData };
 }

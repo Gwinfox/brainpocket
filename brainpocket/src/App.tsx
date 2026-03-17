@@ -18,7 +18,7 @@ import { Registration } from "./ui/registration/Registration";
 
 function App() {
   const { globalError } = useGetError();
-  const { isAuth, userData, loginError, handleLogin, logout, setFriends } = useUserInit();
+  const { isAuth, userData, loginError, handleLogin, logout, setFriends, setUserData } = useUserInit();
   if (globalError) {
     return <Error error={globalError} />;
   }
@@ -32,7 +32,10 @@ function App() {
               path="/login"
               element={<Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />}
             />
-            <Route path="/registration" element={<WithAuthRedirect isAuth={!isAuth} component={<Registration />} />} />
+            <Route
+              path="/registration"
+              element={<WithAuthRedirect isAuth={!isAuth} component={<Registration setUserData={setUserData} />} />}
+            />
             <Route path="/" element={<Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />} />
             <Route path="*" element={<Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />} />
           </Routes>
@@ -72,6 +75,10 @@ function App() {
 
           <Route
             path="/"
+            element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}
+          />
+          <Route
+            path="*"
             element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}
           />
         </Routes>

@@ -6,14 +6,14 @@ import { Posts } from "./posts/Posts";
 import { Preloader } from "../preloader/Preloader";
 
 function ProfilePage({ userData }: ProfilePageProps) {
-  const { profile } = useProfileData(userData);
+  const { profile, changePhoto } = useProfileData(userData);
 
   if (!profile) {
     return <Preloader />;
   }
   return (
     <div className={styles.profilePage}>
-      <Profile profile={profile} loginUserId={userData.userId} />
+      <Profile profile={profile} loginUserId={userData.userId} changePhoto={changePhoto} />
       <Posts loginUserId={userData.userId} userId={profile.userId} />
     </div>
   );

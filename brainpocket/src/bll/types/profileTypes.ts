@@ -7,11 +7,13 @@ export type ProfilePageProps = {
 export type ProfileProps = {
   profile: Profile;
   loginUserId: number;
+  changePhoto: (photo: string) => void;
 };
 export type AvatarProps = {
   avatar: string | null;
   userId: number;
   loginUserId: number;
+  changePhoto: (photo: string) => void;
 };
 export type UsernameProps = {
   name: string;
