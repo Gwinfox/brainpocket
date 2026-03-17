@@ -15,10 +15,11 @@ import { Friends } from "./ui/friends/Friends";
 import { useGetError } from "./bll/Hooks/useGetError";
 import Error from "./ui/Error/Error";
 import { Registration } from "./ui/registration/Registration";
+import { NotFound } from "./ui/notFound/NotFound";
 
 function App() {
   const { globalError } = useGetError();
-  const { isAuth, userData, loginError, handleLogin, logout, setFriends, setUserData } = useUserInit();
+  const { isAuth, userData, loginError, handleLogin, logout, setFriends, setUserData, setIsAuth } = useUserInit();
   if (globalError) {
     return <Error error={globalError} />;
   }
@@ -34,7 +35,12 @@ function App() {
             />
             <Route
               path="/registration"
-              element={<WithAuthRedirect isAuth={!isAuth} component={<Registration setUserData={setUserData} />} />}
+              element={
+                <WithAuthRedirect
+                  isAuth={!isAuth}
+                  component={<Registration setUserData={setUserData} setIsAuth={setIsAuth} />}
+                />
+              }
             />
             <Route path="/" element={<Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />} />
             <Route path="*" element={<Login isAuth={isAuth} handleLogin={handleLogin} loginError={loginError} />} />
@@ -72,15 +78,11 @@ function App() {
               <WithAuthRedirect isAuth={isAuth} component={<Friends userData={userData} setFriends={setFriends} />} />
             }
           />
-
           <Route
             path="/"
             element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}
           />
-          <Route
-            path="*"
-            element={<WithAuthRedirect isAuth={isAuth} component={<ProfilePage userData={userData} />} />}
-          />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </div>

@@ -4,9 +4,18 @@ module.exports = {
   getNews: async (req, res) => {
     try {
       const { friends, page = 1, limit = 10 } = req.body; // Получаем данные из тела запроса
-      if (!friends || !Array.isArray(friends) || friends.length === 0) {
+      if (!friends || !Array.isArray(friends)) {
         return res.status(400).json({ error: "Friends array is required" });
       } // Проверяем наличие в теле запроса массива друзей
+      if (friends.length === 0) {
+        const news = [];
+        res.send({
+          news,
+          resultCode: 0,
+          hasMore: false,
+          totalCount: 0,
+        });
+      }
       const offset = (page - 1) * limit; // Вычисляем смещение
       const placeholders = friends.map(() => "?").join(","); // Формируем заглушку для запроса к базе вида (?,?,?,?...)
       const [news] = await pool.query(

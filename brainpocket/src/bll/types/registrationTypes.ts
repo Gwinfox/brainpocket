@@ -4,6 +4,7 @@ import type { UserData } from "./appTypes";
 // Пропсы
 export type RegistrationProps = {
   setUserData: Dispatch<SetStateAction<UserData | null>>;
+  setIsAuth: Dispatch<SetStateAction<boolean>>;
 };
 
 export type RegistrationFormFields = {

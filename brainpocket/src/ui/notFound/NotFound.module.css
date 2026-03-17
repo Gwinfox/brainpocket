@@ -1,0 +1,39 @@
+.NF_border {
+  margin-top: 5vw;
+  margin-left: 5vw;
+  width: 70vw;
+  height: 70vh;
+  border: 3px solid blue;
+}
+.NF {
+  font-weight: 800;
+  font-size: 3vw;
+  margin-top: 8vh;
+  text-shadow: 1px 1px 1px black;
+  color: rgb(66, 66, 223);
+  text-align: center;
+  padding-bottom: 5vh;
+}
+.number {
+  font-weight: 800;
+  font-size: 8vw;
+  margin-top: 8vh;
+  text-shadow: 1px 1px 1px black;
+  color: rgb(66, 66, 223);
+  text-align: center;
+}
+.link {
+  text-decoration: none;
+}
+.btn_back {
+  border: 3px solid black;
+  text-align: center;
+  font-size: 2vw;
+  display: block;
+  margin: auto;
+  color: white;
+  background-color: rgb(48, 48, 223);
+  border-radius: 3px;
+  height: 1.5em;
+  width: 10vw;
+}
