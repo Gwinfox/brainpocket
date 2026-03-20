@@ -6,16 +6,23 @@ import { useGetError } from "./useGetError";
 
 export function useLoginData(handleLogin: (data: ServerAuthResponse) => void) {
   const [formData, setFormData] = useState<null | LoginFormData>(null);
+  const [captcha, setCaptcha] = useState<string | null>(null);
   const { setGlobalError } = useGetError();
   useEffect(() => {
     formData &&
       authAPI
         .Login(formData)
-        .then((res) => handleLogin(res))
+        .then((res) => {
+          if (res.resultCode === 0) {
+            handleLogin(res);
+          } else {
+            authAPI.getCaptcha().then((res) => setCaptcha(res));
+          }
+        })
         .catch((err) => setGlobalError(err));
   }, [formData]);
   const onSubmit = (data: LoginFormData): void => {
     setFormData(data);
   };
-  return onSubmit;
+  return { onSubmit, captcha };
 }

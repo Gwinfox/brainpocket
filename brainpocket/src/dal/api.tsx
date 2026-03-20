@@ -58,6 +58,9 @@ export const authAPI = {
     }
     return instance.post("/auth/registration", formData).then((res) => res.data);
   },
+  getCaptcha() {
+    return instance.get("/auth/captcha").then((res) => res.data);
+  },
 };
 export const profileAPI = {
   getProfile(userId: string | number) {

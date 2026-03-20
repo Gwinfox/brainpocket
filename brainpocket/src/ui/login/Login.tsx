@@ -3,9 +3,10 @@ import styles from "./Login.module.css";
 import { Navigate, NavLink } from "react-router-dom";
 import { useLoginData } from "../../bll/Hooks/useLoginData";
 import type { LoginFormData, LoginProps } from "../../bll/types/loginTypes";
+import Captcha from "./captcha/Captcha";
 
 function Login({ isAuth, loginError, handleLogin }: LoginProps) {
-  const onSubmit = useLoginData(handleLogin);
+  const { onSubmit, captcha } = useLoginData(handleLogin);
   const {
     register,
     handleSubmit,
@@ -54,6 +55,15 @@ function Login({ isAuth, loginError, handleLogin }: LoginProps) {
         {errors.login && <div className={styles.error}>{errors.login.message}</div>}
         {errors.password && <div className={styles.error}>{errors.password.message}</div>}
         {loginError && <div className={styles.error}>{loginError}</div>}
+        {captcha && (
+          <div>
+            <div className={styles.captchaBlock}>
+              <Captcha captcha={captcha} />
+              <input className={styles.captchaInput} {...register("captcha", { required: true })} />
+            </div>
+            <div className={styles.entercap}>Введите каптчу</div>
+          </div>
+        )}
       </form>
     </div>
   );
