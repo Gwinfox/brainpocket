@@ -5,7 +5,7 @@ import type { SimplifiedError } from "../bll/types/errorTypes";
 import type { RegistrationFormFields } from "../bll/types/registrationTypes";
 
 const instance = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "http://192.168.1.200:5000/api",
   withCredentials: true,
 });
 //Ловим ошибки, формируем упрощенную ошибку
